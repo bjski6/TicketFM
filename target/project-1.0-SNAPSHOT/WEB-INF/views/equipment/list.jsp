@@ -14,12 +14,23 @@
 <body>
 <table border="2">
     <thead>
-    <th>name</th>
+    <th>Nazwa</th>
+    <th>Model</th>
+    <th>Numer seryjny</th>
+    <th>Producent</th>
+    <th>Status urządzenia</th>
+    <th>System</th>
+
     </thead>
     <tbody>
     <c:forEach items="${equipments}" var="equipment">
         <tr>
             <td><c:out value="${equipment.name}"/></td>
+            <td><c:out value="${equipment.model}"/></td>
+            <td><c:out value="${equipment.serialNo}"/></td>
+            <td><c:out value="${equipment.manufacturer}"/></td>
+            <td><c:out value="${equipment.status}"/></td>
+            <td><c:out value="${equipment.installation}"/></td>
         </tr>
     </c:forEach>
     </tbody>
