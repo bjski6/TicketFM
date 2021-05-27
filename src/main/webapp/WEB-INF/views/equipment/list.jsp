@@ -1,17 +1,21 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: bartosz
-  Date: 18.05.2021
-  Time: 20:17
-  To change this template use File | Settings | File Templates.
---%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<html>
-<head>
-    <title>Equipment List</title>
-</head>
-<body>
+<%@ include file="../header.jsp" %>
+
+<div class="content-wrapper"><!-- Content Header(Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Dodaj firmę</h1></div>
+            </div>
+        </div><!-- /.container-fluid --></section><!-- Main content -->
+    <section class="content"><!-- Default box -->
+        <div class="card">
+            <div class="card-body">
+
+
 <table border="2">
     <thead>
     <th>Nazwa</th>
@@ -31,10 +35,10 @@
             <td><c:out value="${equipment.manufacturer}"/></td>
             <td><c:out value="${equipment.status}"/></td>
             <td><c:out value="${equipment.installation}"/></td>
+            <td><a href="edit/${equipment.id}">Edytuj</a> </td>
         </tr>
     </c:forEach>
     </tbody>
 </table>
 
-</body>
-</html>
+<%@ include file="../footer.jsp" %>

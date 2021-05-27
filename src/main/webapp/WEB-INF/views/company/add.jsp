@@ -1,3 +1,10 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: bartosz
+  Date: 18.05.2021
+  Time: 20:18
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -16,29 +23,18 @@
             <div class="card-body">
 
 
-<table border="2">
-    <thead>
-    <th>Nazwa</th>
-    <th>Model</th>
-    <th>Numer seryjny</th>
-    <th>Producent</th>
-    <th>Status urządzenia</th>
-    <th>System</th>
+                <form:form method="post" modelAttribute="company" action="/company/add">
+                <p hidden><form:input path="id" id="id"/></p>
 
-    </thead>
-    <tbody>
-    <c:forEach items="${equipments}" var="equipment">
-        <tr>
-            <td><c:out value="${equipment.name}"/></td>
-            <td><c:out value="${equipment.model}"/></td>
-            <td><c:out value="${equipment.serialNo}"/></td>
-            <td><c:out value="${equipment.manufacturer}"/></td>
-            <td><c:out value="${equipment.status}"/></td>
-            <td><c:out value="${equipment.installation}"/></td>
-            <td><a href="edit/${equipment.id}">Edytuj</a> </td>
-        </tr>
-    </c:forEach>
-    </tbody>
-</table>
+                <label for="subject">Nazwa firmy</label>
+                    <form:input path="name" id="name"/>
+                    <form:errors path="name" cssClass="error"/>
+
+                <label for="type">Typ firmy</label>
+                    <form:select path="type" items="${type}"/>
+                    <form:errors path="type" cssClass="error"/>
+
+                <input type="submit" value="Dodaj">
+                </form:form>
 
 <%@ include file="../footer.jsp" %>
