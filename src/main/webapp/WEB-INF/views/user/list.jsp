@@ -1,7 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ include file="../../header.jsp" %>
+<%@ include file="../header.jsp" %>
 
 <div class="content-wrapper"><!-- Content Header(Page header) -->
     <section class="content-header">
@@ -33,11 +33,12 @@
                                 <td><c:out value="${person.email}"/></td>
                                 <td><c:out value="${person.password}"/></td>
                                 <td><c:out value="${person.phoneNumber}"/></td>
-                                <td><a href="edit/${person.id}">Edytuj</a> </td>
-                                <td><a href="start/contact/delete/${person.id}">Usuń</a> </td>
+                                <td><a href="edit/${person.id}"><input type="button" value="Edytuj"></a></td>
+                                <td><a href="delete/${person.id}"> <input type="button" value="Usuń użytkownika"></a></td>
+
                             </tr>
                         </c:forEach>
                         </tbody>
 
 
-<%@ include file="../../footer.jsp" %>
+<%@ include file="../footer.jsp" %>

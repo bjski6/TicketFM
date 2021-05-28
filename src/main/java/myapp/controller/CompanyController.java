@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
@@ -28,6 +29,8 @@ public class CompanyController {
         return "company/list";
     }
 
+
+
     @GetMapping("company/add")
     private String listAddCompany (Model model){
         Company company = new Company();
@@ -41,6 +44,12 @@ public class CompanyController {
             return "company/add";
         }
         repositoryCompany.save(company);
+        return "redirect:/company/list";
+    }
+
+    @GetMapping("company/delete/{id}")
+    public String deleteCompany (@PathVariable Long id){
+        repositoryCompany.deleteById(id);
         return "redirect:/company/list";
     }
 

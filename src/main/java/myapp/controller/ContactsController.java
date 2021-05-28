@@ -25,26 +25,32 @@ public class ContactsController {
         this.repositoryPerson = repositoryPerson;
     }
 
-    @GetMapping("start/contact/list")
-    private String listContacts (Model model){
+    @GetMapping("/user/list")
+    public String listContacts(Model model) {
         List<Person> personList = repositoryPerson.findAll();
         model.addAttribute("people", personList);
-        return "start/contact/list";
+        return "user/list";
     }
 
-    @GetMapping("/start/contact/edit/{id}")
-    private String editGetPerson (@PathVariable Long id, Model model){
+    @GetMapping("/user/edit/{id}")
+    public String editGetPerson(@PathVariable Long id, Model model) {
         Optional<Person> person = repositoryPerson.findById(id);
         model.addAttribute("person", person);
-        return "start/contact/edit";
+        return "user/edit";
     }
 
-    @PostMapping("/start/contact/edit")
-    private String editPostPerson (@ModelAttribute @Valid Person person, Company company, BindingResult result){
-        if(result.hasErrors()){
-            return "start/contact/edit";
+    @PostMapping("/user/edited")
+    public String editPostPerson(@ModelAttribute @Valid Person person, Company company, BindingResult result) {
+        if (result.hasErrors()) {
+            return "user/edit";
         }
         repositoryPerson.save(person);
-        return "redirect:/start/contact/list";
+        return "redirect:/user/list";
+    }
+
+    @GetMapping("/user/delete/{id}")
+    public String deleteUser(@PathVariable Long id) {
+        repositoryPerson.deleteById(id);
+        return "redirect:/user/list";
     }
 }

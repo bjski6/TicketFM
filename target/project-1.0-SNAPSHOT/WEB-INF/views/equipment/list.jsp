@@ -8,7 +8,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Dodaj firmę</h1></div>
+                    <h1>Lista urządzeń</h1></div>
             </div>
         </div><!-- /.container-fluid --></section><!-- Main content -->
     <section class="content"><!-- Default box -->
@@ -33,7 +33,7 @@
             <td><c:out value="${equipment.model}"/></td>
             <td><c:out value="${equipment.serialNo}"/></td>
             <td><c:out value="${equipment.manufacturer}"/></td>
-            <td><c:out value="${equipment.status}"/></td>
+            <td><c:out value="${equipment.statusEq}"/></td>
             <td><c:out value="${equipment.installation}"/></td>
             <td><a href="edit/${equipment.id}">Edytuj</a> </td>
         </tr>

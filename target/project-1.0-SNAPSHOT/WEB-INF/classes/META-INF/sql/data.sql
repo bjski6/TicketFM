@@ -15,6 +15,9 @@ insert into Installation (name) value ("Budynek");
 insert into Installation (name) value ("Tereny zewnętrzne");
 insert into Installation (name) value ("Inne");
 
+insert into StatusEq (statusEq) value ("W ruchu");
+insert into StatusEq (statusEq) value ("Zdemontowane");
+
 
 insert into Person (name,surname,email, password, phoneNumber) values ("Bartosz", "Jankowski", "bjski@gmail.com","bjskii","555774267");
 insert into Person (name,surname, email, password, phoneNumber) values ("Krzysztof", "Jotel", "krzych@gmail.com","krisopfer","457125486");

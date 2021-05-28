@@ -8,7 +8,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Dodaj firmę</h1></div>
+                    <h1>Aktualności</h1></div>
             </div>
         </div><!-- /.container-fluid --></section><!-- Main content -->
     <section class="content"><!-- Default box -->
@@ -36,8 +36,11 @@
                         </tbody>
 
 
+
                 </div><!-- /.card-body -->
-                <div class="card-footer">Footer</div><!-- /.card-footer--></div><!-- /.card --></section>
+                <div class="card-footer"><li class="nav-item has-treeview"><a href="/news/add" class="nav-link">
+                    <i class="nav-icon fas fa-copy"></i>
+                    <p>Dodaj </p></a></div><!-- /.card-footer--></div><!-- /.card --></section>
         <!-- /.content --></div><!-- /.content-wrapper -->
     <footer class="main-footer">
         <div class="float-right d-none d-sm-block">
