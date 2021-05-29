@@ -32,6 +32,13 @@ public class ContactsController {
         return "user/list";
     }
 
+    @GetMapping("start/contact/list")
+    public String listStartContacts(Model model) {
+        List<Person> personList = repositoryPerson.findAll();
+        model.addAttribute("people", personList);
+        return "start/contact/list";
+    }
+
     @GetMapping("/user/edit/{id}")
     public String editGetPerson(@PathVariable Long id, Model model) {
         Optional<Person> person = repositoryPerson.findById(id);

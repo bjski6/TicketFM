@@ -42,7 +42,7 @@
                     <form:errors path="phoneNumber" cssClass="phoneNumber"/>
                     <br>
 
-                    <input type="submit" value="Dodaj">
+                    <input type="submit" value="Zapisz">
                     <br>
 
 

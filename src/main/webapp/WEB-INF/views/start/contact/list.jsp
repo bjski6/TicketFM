@@ -8,7 +8,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Użytkownicy</h1></div>
+                    <h1>Kontakty</h1></div>
             </div>
         </div><!-- /.container-fluid --></section><!-- Main content -->
     <section class="content"><!-- Default box -->
@@ -33,8 +33,7 @@
                                 <td><c:out value="${person.email}"/></td>
                                 <td><c:out value="${person.password}"/></td>
                                 <td><c:out value="${person.phoneNumber}"/></td>
-                                <td><a href="edit/${person.id}">Edytuj</a> </td>
-                                <td><a href="start/contact/delete/${person.id}">Usuń</a> </td>
+
                             </tr>
                         </c:forEach>
                         </tbody>
