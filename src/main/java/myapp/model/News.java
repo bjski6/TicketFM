@@ -29,8 +29,11 @@ public class News {
     @ManyToOne
     private Person personNews;
 
+
     //data dodania aktualności
     private LocalDateTime dateAdd;
+
+    private String dateString;
 
     //tytuł aktualności
     @NotBlank
@@ -45,4 +48,13 @@ public class News {
     public void prePersist(){
         dateAdd=LocalDateTime.now();
        }
+
+       @Transient
+       public void setFormatDate(){
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
+        dateString = dtf.format(dateAdd);
+       }
+
+
+
 }

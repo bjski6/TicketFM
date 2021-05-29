@@ -6,7 +6,6 @@ insert into Company (name, type ) values ("SPIE", "OBSŁUGA TECHNICZNA");
 insert into Company (name, type ) values ("SAMACO", "NAJEMCA");
 
 
-
 insert into Installation (name) value ("HVAC (ogrzewanie, wentylacja, chłodnictwo");
 insert into Installation (name) value ("Instalacje elektryczne i oświetleniowe");
 insert into Installation (name) value ("Systemy przeciwpożarowe");
@@ -15,11 +14,24 @@ insert into Installation (name) value ("Budynek");
 insert into Installation (name) value ("Tereny zewnętrzne");
 insert into Installation (name) value ("Inne");
 
+-- cos nie dziala
+--  insert into Equipment (name, model, serialNo, manufacturer, installation_id, statusEq_id) value ("Kocioł gazowy", "Victrix", "223155548", "Immergas",1,2);
+
+
 insert into StatusEq (statusEq) value ("W ruchu");
 insert into StatusEq (statusEq) value ("Zdemontowane");
 
+insert into StatusTicket (statusTicket) value ("Otwarte");
+insert into StatusTicket (statusTicket) value ("Zamknięte");
+insert into StatusTicket (statusTicket) value ("Zawieszone");
 
-insert into Person (name,surname,email, password, phoneNumber) values ("Bartosz", "Jankowski", "bjski@gmail.com","bjskii","555774267");
+insert into Permission (permission) value ("administrator");
+insert into Permission (permission) value ("user");
+insert into Permission (permission) value ("superUser");
+insert into Permission (permission) value ("guest");
+
+
+insert into Person (name,surname, email, password, phoneNumber) values ("Bartosz", "Jankowski", "bjski@gmail.com","bjskii","555774267");
 insert into Person (name,surname, email, password, phoneNumber) values ("Krzysztof", "Jotel", "krzych@gmail.com","krisopfer","457125486");
 insert into Person (name,surname, email, password, phoneNumber) values ("Michał", "Kilof", "likol@wp.com","nikosad","354852487");
 insert into Person (name,surname, email, password, phoneNumber) values ("Kornel", "Jorec", "liiiolo@gmail.com","jalowiec","364885211");

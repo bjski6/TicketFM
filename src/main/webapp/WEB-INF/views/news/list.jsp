@@ -17,20 +17,21 @@
 
                     <table border="2">
                         <thead>
-                        <th>Data</th>
-                        <th>Data</th>
+                        <th>Data dodania</th>
                         <th>Temat</th>
                         <th>Zawartość</th>
                         <th>Osoba dodająca</th>
+
 
                         </thead>
                         <tbody>
                         <c:forEach items="${news}" var="news">
                             <tr>
-                                <td><c:out value="${news.dateAdd}"/></td>
+                                <td><c:out value="${news.dateString}"/></td>
                                 <td><c:out value="${news.subject}"/></td>
                                 <td><c:out value="${news.content}"/></td>
-                                <td><c:out value="${news.personNews}"/></td>
+                                <td><c:out value="${news.personNews.getNameAndSurname()}"/></td>
+
                             </tr>
                         </c:forEach>
                         </tbody>

@@ -1,9 +1,6 @@
 package myapp.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
@@ -13,6 +10,7 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
+@ToString
 public class Person {
 
     @Id
@@ -34,7 +32,8 @@ public class Person {
     private Company companyPerson;
 
     // uprawnienia admin/user/superUser/guest
-    private String permission;
+    @ManyToOne
+    private Permission permission;
 
     //lista zgłoszeń/ticketów użytkownika
     @OneToMany(mappedBy = "personTicket")
@@ -55,5 +54,16 @@ public class Person {
     @Override
     public String toString() {
         return  name + '\'' + surname ;
+    }
+
+    public Person(String email, String password) {
+        this.email = email;
+        this.password = password;
+    }
+
+
+    public String getNameAndSurname(){
+        return name + " " + surname;
+
     }
 }

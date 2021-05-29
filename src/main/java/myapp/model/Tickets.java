@@ -26,7 +26,8 @@ public class Tickets {
     private String description;
 
     //status zgłoszenia open/close/suspended
-    private String status;
+    @ManyToOne
+    private StatusTicket statusTicket;
 
     //do jakiej podgrupy/systemu należy
 //    @ManyToOne
@@ -38,6 +39,7 @@ public class Tickets {
 
     //data dodania zgłoszenia
     private LocalDateTime dateAdd;
+
 
     //planowana data wykonania
     private LocalDateTime plannedFinish;
