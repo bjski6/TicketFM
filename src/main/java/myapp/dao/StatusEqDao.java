@@ -1,6 +1,6 @@
-package myapp.controller;
+package myapp.dao;
 
-import myapp.model.StatusEq;
+import myapp.model.EquipmentStatus;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -18,16 +18,16 @@ public class StatusEqDao {
     private EntityManager entityManager;
 
 
-    public void save (StatusEq  statusEq){
-        entityManager.persist(statusEq);
+    public void save (EquipmentStatus equipmentStatus){
+        entityManager.persist(equipmentStatus);
     }
 
-    public StatusEq findById (Long id){
-        return entityManager.find(StatusEq.class, id);
+    public EquipmentStatus findById (Long id){
+        return entityManager.find(EquipmentStatus.class, id);
     }
 
-    public List<StatusEq> findAll(){
-        Query query = entityManager.createQuery("select s from StatusEq s");
+    public List<EquipmentStatus> findAll(){
+        Query query = entityManager.createQuery("select s from EquipmentStatus s");
         return query.getResultList();
     }
 }

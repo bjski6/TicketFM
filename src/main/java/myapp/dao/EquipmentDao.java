@@ -1,4 +1,4 @@
-package myapp.controller;
+package myapp.dao;
 
 import myapp.model.Equipment;
 import myapp.model.Installation;

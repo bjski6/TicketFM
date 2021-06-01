@@ -40,7 +40,7 @@
                         <button type="submit" class="btn btn-primary btn-block">Zaloguj</button>
                     </div><!-- /.col -->
                 </div>
-            </form:form>>
+            </form:form>
 
             <!-- /.login-card-body -->
         </div>

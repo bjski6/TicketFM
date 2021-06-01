@@ -20,16 +20,18 @@
                     <thead>
                     <th>Nazwa Firmy</th>
                     <th>Typ</th>
+                    </thead>
+                    <tbody>
 
                     <c:forEach items="${company}" var="company">
                     <tr>
                         <td><c:out value="${company.name}"/></td>
-                        <td><c:out value="${company.type}"/></td>
-
+                        <td><c:out value="${company.companyType}"/></td>
                         <td><a href="delete/${company.id}">Usuń</a></td>
                     </tr>
                     </c:forEach>
-                    </body>
+                    </tbody>
+                </table>
 
             </div><!-- /.card-body -->
             <div class="card-footer">

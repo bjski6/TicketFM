@@ -36,7 +36,7 @@ public class NewsController {
     }
 
     @GetMapping("news/add")
-    public String listNewsForm(Model model, HttpSession session) {
+    public String addFormNews (Model model) {
         News news = new News();
         model.addAttribute("news", news);
         return "news/add";

@@ -2,11 +2,13 @@ package myapp.controller;
 
 
 import myapp.model.Equipment;
+import myapp.model.EquipmentStatus;
 import myapp.model.Installation;
 
-import myapp.model.StatusEq;
 import myapp.repository.RepositoryEquipment;
 
+import myapp.repository.RepositoryInstallation;
+import myapp.repository.RepositoryEquipmentStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -22,28 +24,26 @@ import java.util.Optional;
 @Controller
 public class EquipmentController {
 
-    private final RepositoryEquipment repository;
-    private final InstallationDao installationDao;
-    private final EquipmentDao equipmentDao;
-    private final StatusEqDao statusEqDao;
+    private final RepositoryEquipment repositoryEquipment;
+    private final RepositoryInstallation repositoryInstallation;
+    private final RepositoryEquipmentStatus repositoryEquipmentStatus;
 
-
-    public EquipmentController(RepositoryEquipment repository, InstallationDao installationDao, EquipmentDao equipmentDao, StatusEqDao statusEqDao) {
-        this.repository = repository;
-        this.installationDao = installationDao;
-        this.equipmentDao = equipmentDao;
-        this.statusEqDao = statusEqDao;
+    public EquipmentController(RepositoryEquipment repositoryEquipment, RepositoryInstallation repositoryInstallation, RepositoryEquipmentStatus repositoryEquipmentStatus) {
+        this.repositoryEquipment = repositoryEquipment;
+        this.repositoryInstallation = repositoryInstallation;
+        this.repositoryEquipmentStatus = repositoryEquipmentStatus;
     }
+
 
     @GetMapping(value = "/equipment/list")
     public String listEquipment(Model model) {
-        List<Equipment> equipmentList = repository.findAll();
+        List<Equipment> equipmentList = repositoryEquipment.findAll();
         model.addAttribute("equipments", equipmentList);
         return "equipment/list";
     }
 
     @GetMapping("/equipment/add")
-    public String listAddForm(Model model) {
+    public String addFormEquipment(Model model) {
         Equipment equipment = new Equipment();
         model.addAttribute("equipment", equipment);
         return "equipment/add";
@@ -51,39 +51,46 @@ public class EquipmentController {
 
     @PostMapping("/equipment/add")
     public String addEquipment(@ModelAttribute @Valid Equipment equipment, BindingResult result,
-                               Installation installation, StatusEq statusEq) {
+                               Installation installation, EquipmentStatus equipmentStatus) {
         if (result.hasErrors()) {
             return "equipment/add";
         }
-        equipmentDao.save(equipment);
+        repositoryEquipment.save(equipment);
         return "redirect:/equipment/list";
     }
 
     @GetMapping("/equipment/edit/{id}")
     public String editEquipment(@PathVariable Long id, Model model) {
-        Equipment equipment = equipmentDao.findById(id);
-        model.addAttribute("equipment", equipment);
+        Optional <Equipment> equipment = repositoryEquipment.findById(id);
+        model.addAttribute("equipment", equipment.get());
         return "equipment/edit";
     }
 
     @PostMapping("/equipment/edited")
     public String editEquipment(@ModelAttribute @Valid Equipment equipment, BindingResult result,
-                                Installation installation, StatusEq statusEq) {
+                                Installation installation, EquipmentStatus equipmentStatus) {
         if (result.hasErrors()) {
             return "equipment/edit";
         }
-        repository.save(equipment);
+        repositoryEquipment.save(equipment);
         return "redirect:/equipment/list";
     }
 
     @ModelAttribute("installations")
     public List<Installation> installations() {
-        return installationDao.findAll();
+        return repositoryInstallation.findAll();
     }
 
-    @ModelAttribute("statusEq")
-    public List<StatusEq> statusEq() {
-        return statusEqDao.findAll();
+    @ModelAttribute("equipmentStatus")
+    public List<EquipmentStatus> equipmentStatusList() {
+        return repositoryEquipmentStatus.findAll();
     }
+
+//public List <String> search(String searchFraze){
+//        return repository.findAll().stream()
+//                .map(equipment -> equipment.getName())
+//                .filter(name -> name.contains(searchFraze))
+//                .collect(Collectors.toList());
+//}
 
 }

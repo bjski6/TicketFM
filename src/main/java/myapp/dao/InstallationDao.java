@@ -1,4 +1,4 @@
-package myapp.controller;
+package myapp.dao;
 
 import myapp.model.Installation;
 import org.springframework.stereotype.Repository;

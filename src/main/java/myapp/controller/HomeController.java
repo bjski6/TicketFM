@@ -1,14 +1,10 @@
 package myapp.controller;
 
-import myapp.model.Company;
-import myapp.model.Permission;
 import myapp.model.Person;
 import myapp.repository.RepositoryPerson;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import javax.servlet.http.HttpSession;
 
 @Controller
 @SessionAttributes("id")
@@ -31,7 +27,7 @@ public class HomeController {
 
     @PostMapping("home/logged")
     public String loginSession(@ModelAttribute Person person, Model model) {
-        System.out.println("-----------------------------------" + person.getEmail());
+
         Person person1 = repositoryPerson.findByEmail(person.getEmail());
         if (person1.getPassword().equals(person.getPassword())) {
             Long id = person1.getId();

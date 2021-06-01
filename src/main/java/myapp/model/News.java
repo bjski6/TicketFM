@@ -29,7 +29,6 @@ public class News {
     @ManyToOne
     private Person personNews;
 
-
     //data dodania aktualności
     private LocalDateTime dateAdd;
 

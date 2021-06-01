@@ -36,10 +36,10 @@
                     <form:errors path="manufacturer" cssClass="error"/>
                 <br>
 
-                <label for="statusEq">Status urządzenia</label>
-                    <form:select itemValue="id" itemLabel="statusEq"
-                                 path="statusEq.id" items="${statusEq}"/>
-                    <form:errors path="statusEq" cssClass="error"/>
+                <label for="equipmentStatus">Status urządzenia</label>
+                    <form:select itemValue="id" itemLabel="equipmentStatus"
+                                 path="equipmentStatus.id" items="${equipmentStatus}"/>
+                    <form:errors path="equipmentStatus" cssClass="error"/>
                 <br>
 
                 <label for="installation">System</label>

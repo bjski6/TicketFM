@@ -10,3 +10,9 @@ public interface RepositoryPerson extends JpaRepository <Person, Long> {
     @Query (value = "select * from Person where email = ?1", nativeQuery = true)
     Person findByEmail(String email);
 }
+
+
+// query do szukaj
+// @Query (value = "select * from Person where email = %bjsk% ", nativeQuery = true)
+//    Person findByEmail(String email);
+//}

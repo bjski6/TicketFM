@@ -15,17 +15,17 @@ import javax.persistence.Id;
 @AllArgsConstructor
 @NoArgsConstructor
 
-public class StatusTicket {
+public class TicketStatus {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String statusTicket;
+    private String ticketStatus;
 
     @Override
     public String toString(){
-        return statusTicket;
+        return ticketStatus;
     }
 
 }

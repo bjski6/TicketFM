@@ -1,7 +1,9 @@
 package myapp.controller;
 
 import myapp.model.Company;
+import myapp.model.CompanyType;
 import myapp.repository.RepositoryCompany;
+import myapp.repository.RepositoryCompanyType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -17,29 +19,30 @@ import java.util.List;
 public class CompanyController {
 
     private final RepositoryCompany repositoryCompany;
+    private final RepositoryCompanyType repositoryCompanyType;
 
-    public CompanyController(RepositoryCompany repositoryCompany) {
+    public CompanyController(RepositoryCompany repositoryCompany, RepositoryCompanyType repositoryCompanyType) {
         this.repositoryCompany = repositoryCompany;
+        this.repositoryCompanyType = repositoryCompanyType;
     }
 
     @GetMapping("company/list")
-    private String listCompany (Model model){
-        List <Company> companyList = repositoryCompany.findAll();
-        model.addAttribute("company",companyList);
+    private String listCompany(Model model) {
+        List<Company> companyList = repositoryCompany.findAll();
+        model.addAttribute("company", companyList);
         return "company/list";
     }
 
 
-
-    @GetMapping("company/add")
-    private String listAddCompany (Model model){
+    @GetMapping("/company/add")
+    private String listAddCompany(Model model) {
         Company company = new Company();
         model.addAttribute("company", company);
         return "company/add";
     }
 
-    @PostMapping("company/add")
-    private String addCompany (@ModelAttribute @Valid Company company, BindingResult result){
+    @PostMapping("/company/add")
+    private String addCompany(@ModelAttribute @Valid Company company, BindingResult result, CompanyType companyType) {
         if (result.hasErrors()) {
             return "company/add";
         }
@@ -48,17 +51,16 @@ public class CompanyController {
     }
 
     @GetMapping("company/delete/{id}")
-    public String deleteCompany (@PathVariable Long id){
+    public String deleteCompany(@PathVariable Long id) {
         repositoryCompany.deleteById(id);
         return "redirect:/company/list";
     }
 
-    @ModelAttribute("type")
-    public List<String> getType() {
-        List<String> list = List.of(new String[]{"Najemca", "Właściciel", "Serwis techniczny"});
-        return list;
+    @ModelAttribute("companyType")
+    public List<CompanyType> companyTypeList() {
+        return repositoryCompanyType.findAll();
     }
-    }
+}
 
 
 

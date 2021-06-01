@@ -1,8 +1,8 @@
 package myapp.config;
 
 
-import myapp.InstallationConverter;
-import myapp.StatusConverter;
+import myapp.converter.*;
+import myapp.model.CompanyType;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -78,6 +78,11 @@ public class AppConfig implements WebMvcConfigurer {
     @Override
     public void addFormatters(FormatterRegistry registry) {
         registry.addConverter(getInstallationConverter());
+        registry.addConverter(getEquipmentStatusConverter());
+        registry.addConverter(getCompanyTypeConverter());
+        registry.addConverter(getTicketTypeConverter());
+        registry.addConverter(getTicketStatusConverter());
+        registry.addConverter(getPersonConverter());
     }
 
     @Bean
@@ -86,7 +91,28 @@ public class AppConfig implements WebMvcConfigurer {
     }
 
     @Bean
-    public StatusConverter getStatusEqConverter() {
-        return new StatusConverter();
+    public EquipmentStatusConverter getEquipmentStatusConverter() {
+        return new EquipmentStatusConverter();
+    }
+
+    @Bean
+    public CompanyTypeConverter getCompanyTypeConverter() {
+        return new CompanyTypeConverter();
+    }
+
+    @Bean
+    public TicketTypeConverter getTicketTypeConverter() {
+        return new TicketTypeConverter();
+    }
+
+    @Bean
+    public TicketStatusConverter getTicketStatusConverter() {
+        return new TicketStatusConverter();
+    }
+
+
+    @Bean
+    public PersonConverter getPersonConverter() {
+        return new PersonConverter();
     }
 }

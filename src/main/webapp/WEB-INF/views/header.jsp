@@ -68,10 +68,10 @@
                     <li class="nav-item has-treeview"><a href="#" class="nav-link"><i class="nav-icon fas fa-tree"></i>
                         <p>Zgłoszenia <i class="fas fa-angle-left right"></i></p></a>
                         <ul class="nav nav-treeview">
-                            <li class="nav-item"><a href="../UI/general.html" class="nav-link"><i
+                            <li class="nav-item"><a href="/ticket/list" class="nav-link"><i
                                     class="far fa-circle nav-icon"></i>
                                 <p>Lista Zgłoszeń</p></a></li>
-                            <li class="nav-item"><a href="../UI/icons.html" class="nav-link"><i
+                            <li class="nav-item"><a href="/ticket/add" class="nav-link"><i
                                     class="far fa-circle nav-icon"></i>
                                 <p>Nowe zgłoszenie</p></a></li>
                         </ul>

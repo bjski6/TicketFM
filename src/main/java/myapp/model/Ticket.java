@@ -7,13 +7,14 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
 @Entity
-public class Tickets {
+public class Ticket {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,26 +28,25 @@ public class Tickets {
 
     //status zgłoszenia open/close/suspended
     @ManyToOne
-    private StatusTicket statusTicket;
-
-    //do jakiej podgrupy/systemu należy
-//    @ManyToOne
-//    private InstallationType installationTypeTickets;
-
-    //do jakiej szczegółowej podgrupy/systemu należy
-//    @ManyToOne
-//    private InstallationType installationTickets;
+    private TicketStatus ticketStatus;
 
     //data dodania zgłoszenia
     private LocalDateTime dateAdd;
 
+    private String dateAddString;
 
     //planowana data wykonania
-    private LocalDateTime plannedFinish;
+    private LocalDateTime plannedFinishDate;
+
+    private String dateFromFormString;
 
     //firma, lokalizacja, kto zgłasza usterkę
     @ManyToOne
-    private Company companyTickets;
+    private Company companyTicket;
+
+    @ManyToOne
+    private TicketType ticketType;
+
 
     //użytkownik dodający zgłoszenie
     @ManyToOne
@@ -54,10 +54,27 @@ public class Tickets {
 
     //odpowiedzialny użytkownik
     @ManyToOne
-    private Person responsibleTicketPerson;
+    private Person personResponsibleTicket;
+
+    @ManyToOne
+    private Installation installationTicket;
 
     @PrePersist
     public void prePersist(){
         dateAdd = LocalDateTime.now();
     }
+
+    @Transient
+    public void setFormatDate(){
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
+        dateAddString = dtf.format(dateAdd);
+    }
+
+    @Transient
+    public void setLocalDate(){
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
+        plannedFinishDate = LocalDateTime.parse(dateFromFormString, dtf);
+    }
+
+
 }

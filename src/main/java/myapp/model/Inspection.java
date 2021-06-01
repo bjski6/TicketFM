@@ -24,7 +24,7 @@ public class Inspection {
     private String name;
 
     //status (otwarte/anulowane/wykonane/zakończone)
-    private String status;
+    private String statusInspection;
 
     //do jakiej podgrupy/systemu należy
 //    @ManyToOne

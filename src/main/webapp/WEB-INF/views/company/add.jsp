@@ -30,9 +30,10 @@
                     <form:input path="name" id="name"/>
                     <form:errors path="name" cssClass="error"/>
 
-                <label for="type">Typ firmy</label>
-                    <form:select path="type" items="${type}"/>
-                    <form:errors path="type" cssClass="error"/>
+                <label for="companyType">Typ firmy</label>
+                    <form:select itemValue="id" itemLabel="companyType"
+                                 path="companyType.id" items="${companyType}"/>
+                    <form:errors path="companyType" cssClass="error"/>
 
                 <input type="submit" value="Dodaj">
                 </form:form>

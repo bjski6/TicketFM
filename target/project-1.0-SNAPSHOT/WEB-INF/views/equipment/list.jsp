@@ -33,7 +33,7 @@
             <td><c:out value="${equipment.model}"/></td>
             <td><c:out value="${equipment.serialNo}"/></td>
             <td><c:out value="${equipment.manufacturer}"/></td>
-            <td><c:out value="${equipment.statusEq}"/></td>
+            <td><c:out value="${equipment.equipmentStatus}"/></td>
             <td><c:out value="${equipment.installation}"/></td>
             <td><a href="edit/${equipment.id}">Edytuj</a> </td>
         </tr>

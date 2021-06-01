@@ -14,18 +14,17 @@ import javax.persistence.Id;
 @Getter@Setter
 @AllArgsConstructor
 @NoArgsConstructor
-
-public class StatusEq {
+public class EquipmentStatus {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String statusEq;
+    private String equipmentStatus;
 
     @Override
     public String toString(){
-        return statusEq;
+        return equipmentStatus;
     }
 
 }

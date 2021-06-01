@@ -1,12 +1,13 @@
-insert into Company (name, type ) values ("BRW", "NAJEMCA");
-insert into Company (name, type ) values ("l&d", "NAJEMCA");
-insert into Company (name, type ) values ("ASPLEX", "NAJEMCA");
-insert into Company (name, type ) values ("PROLOGIS", "WŁAŚCICIEL");
-insert into Company (name, type ) values ("SPIE", "OBSŁUGA TECHNICZNA");
-insert into Company (name, type ) values ("SAMACO", "NAJEMCA");
+
+insert into Company (name, companyType_id) values ("BRW", 2);
+insert into Company (name, companyType_id) values ("l&d", 2);
+insert into Company (name, companyType_id) values ("ASPLEX", 2);
+insert into Company (name, companyType_id) values ("PROLOGIS", 1);
+insert into Company (name, companyType_id) values ("SPIE", 3);
+insert into Company (name, companyType_id) values ("SAMACO", 2);
 
 
-insert into Installation (name) value ("HVAC (ogrzewanie, wentylacja, chłodnictwo");
+insert into Installation (name) value ("HVAC (ogrzewanie, wentylacja, chłodnictwo)");
 insert into Installation (name) value ("Instalacje elektryczne i oświetleniowe");
 insert into Installation (name) value ("Systemy przeciwpożarowe");
 insert into Installation (name) value ("Instalacje wodno-kanalizacyjne");
@@ -18,17 +19,24 @@ insert into Installation (name) value ("Inne");
 --  insert into Equipment (name, model, serialNo, manufacturer, installation_id, statusEq_id) value ("Kocioł gazowy", "Victrix", "223155548", "Immergas",1,2);
 
 
-insert into StatusEq (statusEq) value ("W ruchu");
-insert into StatusEq (statusEq) value ("Zdemontowane");
+insert into EquipmentStatus (equipmentStatus) value ("W ruchu");
+insert into EquipmentStatus (equipmentStatus) value ("Zdemontowane");
 
 insert into StatusTicket (statusTicket) value ("Otwarte");
 insert into StatusTicket (statusTicket) value ("Zamknięte");
 insert into StatusTicket (statusTicket) value ("Zawieszone");
 
-insert into Permission (permission) value ("administrator");
-insert into Permission (permission) value ("user");
-insert into Permission (permission) value ("superUser");
-insert into Permission (permission) value ("guest");
+insert into PermissionsPerson (permission) value ("administrator");
+insert into PermissionsPerson (permission) value ("user");
+insert into PermissionsPerson (permission) value ("superUser");
+insert into PermissionsPerson (permission) value ("gość");
+
+insert into CompanyType (companyType) value ("Właściciel/Zarządca");
+insert into CompanyType (companyType) value ("Najemca");
+insert into CompanyType (companyType) value ("Obsługa techniczna");
+insert into CompanyType (companyType) value ("Serwis sprzątający");
+insert into CompanyType (companyType) value ("Ochrona");
+
 
 
 insert into Person (name,surname, email, password, phoneNumber) values ("Bartosz", "Jankowski", "bjski@gmail.com","bjskii","555774267");

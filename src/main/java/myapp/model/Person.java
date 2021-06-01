@@ -33,11 +33,11 @@ public class Person {
 
     // uprawnienia admin/user/superUser/guest
     @ManyToOne
-    private Permission permission;
+    private PersonPermissions personPermissions;
 
     //lista zgłoszeń/ticketów użytkownika
     @OneToMany(mappedBy = "personTicket")
-    private List <Tickets> ticketsList;
+    private List <Ticket> ticketList;
 
     // lista przeglądów dodanych przez użytkownika
     @OneToMany(mappedBy = "ownerPerson")
@@ -48,12 +48,12 @@ public class Person {
     private List <Inspection> responsibleInspectionPersonList;
 
     //lista zgłoszeń za które odpowiedzialny jest użytkownik
-    @OneToMany(mappedBy = "responsibleTicketPerson")
-    private List <Tickets> responsibleTicketPersonList;
+    @OneToMany(mappedBy = "personResponsibleTicket")
+    private List <Ticket> responsibleTicketPersonList;
 
     @Override
     public String toString() {
-        return  name + '\'' + surname ;
+        return  name + ' ' + surname ;
     }
 
     public Person(String email, String password) {

@@ -23,16 +23,21 @@ public class Company {
     private String name;
 
     // typ firmy najemca/obsługa techniczna/ serwis sprzątający/ właściciel
-    private String type;
 
+    @ManyToOne
+    private CompanyType companyType;
 
     @OneToMany(mappedBy = "companyPerson")
     private List <Person> companyPersonList;
 
-    @OneToMany (mappedBy = "companyTickets")
-    private List <Tickets> companyTicketsList;
+//    @OneToMany (mappedBy = "companyTicket")
+//    private List <Ticket> companyTicketList;
 
     @OneToMany(mappedBy = "companyInspection")
     private List <Inspection> companyInspectionList;
 
+    @Override
+    public String toString(){
+        return name;
+    }
 }
