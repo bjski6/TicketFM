@@ -20,17 +20,18 @@
     <div class="login-logo"><b>Ticket</b>FM</div><!-- /.login-logo -->
     <div class="card">
         <div class="card-body login-card-body"><p class="login-box-msg">Zaloguj się</p>
-            <form:form method="post" modelAttribute="person" action="/home/logged">
-            <div class="input-group mb-3">
-                <label for="email">Email</label>
-                    <form:input path="email" id ="email"/>
-                        <div class="input-group-append">
-                        <div class="input-group-text"><span class="fas fa-envelope"></span></div>
+            <form:form method="post" modelAttribute="person" action="login">
+                <div class="input-group mb-3">
+                    <input class="form-control" <form:input path="email" id="email" placeholder="EMAIL"/>
+                    <div class="input-group-append">
+                        <div class="input-group-text"><span class="fas fa-envelope">
+
+                        </span>
+                        </div>
                     </div>
                 </div>
                 <div class="input-group mb-3">
-                    <label for="password">Password</label>
-                    <form:input path="password" id ="password"/>
+                    <input class="form-control" <form:input path="password" id="password" placeholder="HASŁO"/>
                     <div class="input-group-append">
                         <div class="input-group-text"><span class="fas fa-lock"></span></div>
                     </div>
@@ -52,5 +53,7 @@
     <script src="<c:url value="/resources/dist/js/adminlte.min.js"/>"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="<c:url value="/resources/dist/js/demo.js"/>"></script>
+</div>
 </body>
 </html>
+

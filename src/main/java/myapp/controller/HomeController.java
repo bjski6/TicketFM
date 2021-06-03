@@ -18,28 +18,35 @@ public class HomeController {
     }
 
 
-    @GetMapping("/home/login")
-   public String login(Model model) {
+    @GetMapping("/login")
+    public String login(Model model) {
         Person person = new Person();
-        model.addAttribute("person",person);
-        return "home/login";
+        model.addAttribute("person", person);
+        return "login";
     }
 
-    @PostMapping("home/logged")
+    @PostMapping("/login")
     public String loginSession(@ModelAttribute Person person, Model model) {
 
-        Person person1 = repositoryPerson.findByEmail(person.getEmail());
-        if (person1.getPassword().equals(person.getPassword())) {
-            Long id = person1.getId();
-            model.addAttribute("id",id);
-         return "redirect: ../news/list";
+        try {
+            Person person1 = repositoryPerson.findByEmail(person.getEmail());
+            if (person1.getPassword().equals(person.getPassword())) {
+                Long id = person1.getId();
+                model.addAttribute("id", id);
+                return "redirect: ../news/list";
+            }
+
+        } catch (NullPointerException n) {
+            return "loginError";
         }
-        return "home/login";
-
+        return "loginError";
     }
-
-
 }
+
+
+
+
+
 
 
 

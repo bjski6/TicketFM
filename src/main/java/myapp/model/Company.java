@@ -33,8 +33,8 @@ public class Company {
 //    @OneToMany (mappedBy = "companyTicket")
 //    private List <Ticket> companyTicketList;
 
-    @OneToMany(mappedBy = "companyInspection")
-    private List <Inspection> companyInspectionList;
+//    @OneToMany(mappedBy = "companyInspection")
+//    private List <Inspection> companyInspectionList;
 
     @Override
     public String toString(){

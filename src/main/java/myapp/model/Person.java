@@ -44,7 +44,7 @@ public class Person {
     private List <Inspection> ownerPersonList;
 
     //lista przeglądów za które odpowiedzialny jest użytkownik
-    @OneToMany(mappedBy = "responsibleInspectionPerson")
+    @OneToMany(mappedBy = "inspectionResponsiblePerson")
     private List <Inspection> responsibleInspectionPersonList;
 
     //lista zgłoszeń za które odpowiedzialny jest użytkownik

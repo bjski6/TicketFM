@@ -40,7 +40,7 @@
                             <td><c:out value="${ticket.description}"/></td>
                             <td><c:out value="${ticket.ticketType}"/></td>
                             <td><c:out value="${ticket.installationTicket}"/></td>
-                            <td><c:out value="${ticket.ticketStatus}"/></td>
+                            <td><c:out value="${ticket.status}"/></td>
                             <td><c:out value="${ticket.companyTicket}"/></td>
                             <td><c:out value="${ticket.personTicket.getNameAndSurname()}"/></td>
                             <td><c:out value="${ticket.dateAddString}"/></td>

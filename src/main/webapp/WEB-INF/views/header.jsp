@@ -79,10 +79,10 @@
                     <li class="nav-item has-treeview"><a href="#" class="nav-link"><i class="nav-icon fas fa-edit"></i>
                         <p>Przeglądy <i class="fas fa-angle-left right"></i></p></a>
                         <ul class="nav nav-treeview">
-                            <li class="nav-item"><a href="../forms/general.html" class="nav-link"><i
+                            <li class="nav-item"><a href="/inspection/list" class="nav-link"><i
                                     class="far fa-circle nav-icon"></i>
                                 <p>Lista przeglądów</p></a></li>
-                            <li class="nav-item"><a href="../forms/advanced.html" class="nav-link"><i
+                            <li class="nav-item"><a href="/inspection/add" class="nav-link"><i
                                     class="far fa-circle nav-icon"></i>
                                 <p>Definicja przeglądów</p></a></li>
                         </ul>

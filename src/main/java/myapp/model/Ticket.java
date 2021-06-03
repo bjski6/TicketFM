@@ -1,9 +1,6 @@
 package myapp.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -14,6 +11,7 @@ import java.time.format.DateTimeFormatter;
 @Getter
 @Setter
 @Entity
+@ToString
 public class Ticket {
 
     @Id
@@ -28,7 +26,7 @@ public class Ticket {
 
     //status zgłoszenia open/close/suspended
     @ManyToOne
-    private TicketStatus ticketStatus;
+    private Status status;
 
     //data dodania zgłoszenia
     private LocalDateTime dateAdd;

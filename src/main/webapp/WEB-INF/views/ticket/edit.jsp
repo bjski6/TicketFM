@@ -32,10 +32,10 @@
                     <form:errors path="ticketType" cssClass="error"/>
                 <br>
 
-                <label for="ticketStatus">Status zgłoszenia</label>
-                    <form:select itemValue="id" itemLabel="ticketStatus"
-                                 path="ticketStatus.id" items="${ticketStatusList}"/>
-                    <form:errors path="ticketStatus" cssClass="error"/>
+                <label for="status">Status zgłoszenia</label>
+                    <form:select itemValue="id" itemLabel="status"
+                                 path="status.id" items="${statusList}"/>
+                    <form:errors path="status" cssClass="error"/>
                 <br>
 
                 <label for="installationTicket">System</label>

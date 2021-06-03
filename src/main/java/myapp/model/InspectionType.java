@@ -1,5 +1,6 @@
 package myapp.model;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,20 +13,20 @@ import javax.persistence.Id;
 
 @Entity
 @Getter@Setter
-@AllArgsConstructor
 @NoArgsConstructor
-
-public class TicketStatus {
+@AllArgsConstructor
+public class InspectionType {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String ticketStatus;
+    private String type;
 
     @Override
     public String toString(){
-        return ticketStatus;
+        return type;
     }
+
 
 }

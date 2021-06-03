@@ -3,6 +3,7 @@ package myapp.config;
 
 import myapp.converter.*;
 import myapp.model.CompanyType;
+import myapp.model.InspectionCycle;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -81,8 +82,10 @@ public class AppConfig implements WebMvcConfigurer {
         registry.addConverter(getEquipmentStatusConverter());
         registry.addConverter(getCompanyTypeConverter());
         registry.addConverter(getTicketTypeConverter());
-        registry.addConverter(getTicketStatusConverter());
+        registry.addConverter(getStatusConverter());
         registry.addConverter(getPersonConverter());
+        registry.addConverter(getInspectionCycleConverter());
+        registry.addConverter(getInspectionTypeConverter());
     }
 
     @Bean
@@ -106,13 +109,22 @@ public class AppConfig implements WebMvcConfigurer {
     }
 
     @Bean
-    public TicketStatusConverter getTicketStatusConverter() {
-        return new TicketStatusConverter();
+    public StatusConverter getStatusConverter() {
+        return new StatusConverter();
     }
-
 
     @Bean
     public PersonConverter getPersonConverter() {
         return new PersonConverter();
+    }
+
+    @Bean
+    public InspectionCycleConverter getInspectionCycleConverter() {
+        return new InspectionCycleConverter();
+    }
+
+    @Bean
+    public InspectionTypeConverter getInspectionTypeConverter() {
+        return new InspectionTypeConverter();
     }
 }

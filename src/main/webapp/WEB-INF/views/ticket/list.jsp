@@ -35,7 +35,7 @@
                             <td><c:out value="${ticket.subject}"/></td>
                             <td><c:out value="${ticket.ticketType}"/></td>
                             <td><c:out value="${ticket.installationTicket}"/></td>
-                            <td><c:out value="${ticket.ticketStatus}"/></td>
+                            <td><c:out value="${ticket.status}"/></td>
                             <td><c:out value="${ticket.dateAddString}"/></td>
                             <td><c:out value="${ticket.dateFromFormString}"/></td>
                             <td><c:out value="${ticket.personResponsibleTicket.getNameAndSurname()}"/></td>

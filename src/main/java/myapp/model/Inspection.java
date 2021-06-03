@@ -1,9 +1,6 @@
 package myapp.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.Duration;
@@ -14,6 +11,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @Entity
+@ToString
 public class Inspection {
 
     @Id
@@ -21,37 +19,41 @@ public class Inspection {
     private Long id;
 
     //nazwa przeglądu
-    private String name;
+    private String subject;
 
     //status (otwarte/anulowane/wykonane/zakończone)
-    private String statusInspection;
+    @ManyToOne
+    private Status status;
 
-    //do jakiej podgrupy/systemu należy
-//    @ManyToOne
-//    private InstallationType installationTypeInspection;
-
-    //do jakiej szczegółowej podgrupy/systemu należy
-//    @ManyToOne
-//    private Installation installationInspection;
+    //    do jakiej szczegółowej podgrupy/systemu należy
+    @ManyToOne
+    private Installation installationInspection;
 
     // data dodania przeglądu
     private LocalDateTime dateAdd;
+    private String dateAddString;
 
-    //data przeglądu, ustawiana przez ownerPerson
+    //data rozpoczęcia cyklu
     private LocalDateTime startInspection;
+    private String startInspectionString;
 
-    //data do kiedy mają zostać wygenerowane przeglądy
+    private String inspectionDuration;
+
+    //data zakończenia cyklu
     private LocalDateTime endInspection;
+    private String endInspectionString;
 
     //interwał wygenerowania przeglądów (tydzień, miesiąc, kwartał, półrocze, rok)
-    private Integer intervalOfInspection;
+    @ManyToOne
+    private InspectionCycle inspectionCycle;
 
     //ilość dni przypominających o wykonaniu przeglądu- wyświetli dashboard
-    private Duration reminder;
+    @ManyToOne
+    private InspectionType inspectionType;
 
     //firma/lokalizacja wykonania przeglądu urządzenia
     @ManyToOne
-    private Company companyInspection;
+    private Company inspectionCompany;
 
     //użytkownik dodający przegląd
     @ManyToOne
@@ -59,11 +61,32 @@ public class Inspection {
 
     //odpowiedzialny użytkownik
     @ManyToOne
-    private Person responsibleInspectionPerson;
+    private Person inspectionResponsiblePerson;
 
     @PrePersist
     public void prePersist() {
         dateAdd = LocalDateTime.now();
     }
+
+    @Transient
+    public void setEndInspection() {
+        endInspection = startInspection.plusDays(Integer.parseInt(inspectionDuration));
+    }
+
+//    @Transient startInspection.plusDays(1);
+//    public void getCycleTime() {
+//        if (inspectionCycle.getCycle()==("D")) {
+//            startInspection.plusDays(1);
+//        } else if (inspectionCycle.getCycle()==("M")) {
+//            startInspection.plusMonths(1);
+//        } else if (inspectionCycle.getCycle()==("Q")) {
+//            startInspection.plusMonths(3);
+//        } else if (inspectionCycle.getCycle()==("H")) {
+//            startInspection.plusMonths(6);
+//        } else if (inspectionCycle.getCycle()==("Y")) {
+//            startInspection.plusYears(1);
+//        }
+//    }
+
 
 }

@@ -23,15 +23,15 @@ public class TicketController {
     private final RepositoryCompany repositoryCompany;
     private final RepositoryTicketType repositoryTicketType;
     private final RepositoryInstallation repositoryInstallation;
-    private final RepositoryTicketStatus repositoryTicketStatus;
+    private final RepositoryStatus repositoryStatus;
 
-    public TicketController(RepositoryTicket repositoryTicket, RepositoryPerson repositoryPerson, RepositoryCompany repositoryCompany, RepositoryTicketType repositoryTicketType, RepositoryInstallation repositoryInstallation, RepositoryTicketStatus repositoryTicketStatus) {
+    public TicketController(RepositoryTicket repositoryTicket, RepositoryPerson repositoryPerson, RepositoryCompany repositoryCompany, RepositoryTicketType repositoryTicketType, RepositoryInstallation repositoryInstallation, RepositoryStatus repositoryStatus) {
         this.repositoryTicket = repositoryTicket;
         this.repositoryPerson = repositoryPerson;
         this.repositoryCompany = repositoryCompany;
         this.repositoryTicketType = repositoryTicketType;
         this.repositoryInstallation = repositoryInstallation;
-        this.repositoryTicketStatus = repositoryTicketStatus;
+        this.repositoryStatus = repositoryStatus;
     }
 
 
@@ -62,8 +62,12 @@ public class TicketController {
         ticket.setPersonTicket(person.get());
         Optional<Person> defaultPerson = repositoryPerson.findById(5L);
         ticket.setPersonResponsibleTicket(defaultPerson.get());
-        Optional<TicketStatus> defaultStatus = repositoryTicketStatus.findById(1L);
-        ticket.setTicketStatus(defaultStatus.get());
+        Optional<Status> defaultStatus = repositoryStatus.findById(1L);
+        ticket.setStatus(defaultStatus.get());
+
+
+        System.out.println("====================" +ticket);
+
         repositoryTicket.save(ticket);
         return "redirect: /ticket/list";
     }
@@ -106,8 +110,8 @@ public class TicketController {
     }
 
     @ModelAttribute("ticketStatusList")
-    public List<TicketStatus> ticketStatusList(){
-        return repositoryTicketStatus.findAll();
+    public List<Status> ticketStatusList(){
+        return repositoryStatus.findAll();
     }
 
     @ModelAttribute("personList")

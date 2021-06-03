@@ -8,15 +8,31 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Nowa Definicja</h1></div>
+                    <h1>Dodaj przeglądy</h1></div>
             </div>
         </div><!-- /.container-fluid --></section><!-- Main content -->
     <section class="content"><!-- Default box -->
         <div class="card">
             <div class="card-body">
-                <form:form method="post" modelAttribute="inspection" action="/inspection/add">
+                <form:form method="post" modelAttribute="inspection" action="/inspection/generate">
                     <p hidden><form:input path="id" id="id"/></p>
 
+                    <td>Cykl</td>
+                    <c:out value="${inspection.inspectionCycle}"/>
+                    <br>
+
+                    <label for="startInspectionString">Początek cyklu</label>
+                    <form:input path="startInspectionString" id="startInspectionString"/>
+                    <form:errors path="startInspectionString" cssClass="error"/>
+                    <br>
+
+                    <label for="endInspectionString">Koniec cyklu</label>
+                    <form:input path="endInspectionString" id="endInspectionString"/>
+                    <form:errors path="endInspectionString" cssClass="error"/>
+                    <br>
+
+
+<p hidden>
                     <label for="subject">Temat</label>
                     <form:input path="subject" id="subject"/>
                     <form:errors path="subject" cssClass="error"/>
@@ -24,7 +40,7 @@
 
                     <label for="inspectionCompany">Firma</label>
                     <form:select itemValue="id" itemLabel="name"
-                                 path="inspectionCompany.id" items="${companyList}"/>
+                                 path="inspectionCompany.id" item="${inspectioncompanyList}"/>
                     <form:errors path="inspectionCompany" cssClass="error"/>
                     <br>
 
@@ -42,28 +58,18 @@
 
                     <label for="inspectionCycle">Cykl</label>
                     <form:select itemValue="id" itemLabel="cycle"
-                    path="inspectionCycle.id" items="${inspectionCycleList}"/>
+                                 path="inspectionCycle.id" items="${inspectionCycleList}"/>
                     <form:errors path="inspectionCycle" cssClass="error"/>
                     <br>
-
-                    <label for="startInspectionString">Data rozpoczęcia cyklu</label>
-                    <form:input path="startInspectionString" id="startInspectionString"/>
-                    <form:errors path="startInspectionString" cssClass="error"/>
-                    <br>
-
-                    <label for="endInspectionString">Data zakończenia cykluu</label>
-                    <form:input path="endInspectionString" id="endInspectionString"/>
-                    <form:errors path="endInspectionString" cssClass="error"/>
-                    <br>
-
 
                     <label for="inspectionDuration">Czas trwania przeglądu</label>
                     <form:input path="inspectionDuration" id="inspectionDuration"/>
                     <form:errors path="inspectionDuration" cssClass="error"/>
                     <br>
 
+</p>
 
-                    <input type="submit" value="Dodaj">
+                    <input type="submit" value="Generuj">
                 </form:form>
 
             </div><!-- /.card-body -->
