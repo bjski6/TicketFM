@@ -3,6 +3,7 @@ package myapp.model;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.time.Duration;
 import java.time.LocalDateTime;
 
@@ -19,6 +20,7 @@ public class Inspection {
     private Long id;
 
     //nazwa przeglądu
+    @NotBlank (message = "Podaj nazwę")
     private String subject;
 
     //status (otwarte/anulowane/wykonane/zakończone)
@@ -34,13 +36,19 @@ public class Inspection {
     private String dateAddString;
 
     //data rozpoczęcia cyklu
+
     private LocalDateTime startInspection;
+
+    @NotBlank (message = "Podaj datę rozpoczęcia cyklu")
     private String startInspectionString;
+
 
     private String inspectionDuration;
 
     //data zakończenia cyklu
     private LocalDateTime endInspection;
+
+    @NotBlank (message = "Podaj datę zakończenia cyklu")
     private String endInspectionString;
 
     //interwał wygenerowania przeglądów (tydzień, miesiąc, kwartał, półrocze, rok)
@@ -68,10 +76,10 @@ public class Inspection {
         dateAdd = LocalDateTime.now();
     }
 
-    @Transient
-    public void setEndInspection() {
-        endInspection = startInspection.plusDays(Integer.parseInt(inspectionDuration));
-    }
+//    @Transient
+//    public void setEndInspection() {
+//        endInspection = startInspection.plusDays(Integer.parseInt(inspectionDuration));
+//    }
 
 //    @Transient startInspection.plusDays(1);
 //    public void getCycleTime() {

@@ -22,7 +22,7 @@ public class Equipment {
     private Long id;
 
     //nazwa urządzenia
-    @NotBlank
+    @NotBlank(message = "Wprowadź nazwę")
     @Size(min = 2, max = 50)
     private String name;
 

@@ -7,48 +7,38 @@
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1>Aktualności</h1></div>
-            </div>
-        </div><!-- /.container-fluid --></section><!-- Main content -->
+                <div class="col-sm-6"><h1>Aktualności</h1></div>
+                <div class="card-footer"><a href="/news/add" ><input type="button" value="Dodaj">
+                </a>
+
+                </div>
+            </div><!-- /.container-fluid -->
+    </section><!-- Main content -->
     <section class="content"><!-- Default box -->
         <div class="card">
-            <div class="card-body">
-
-                    <table border="2">
-                        <thead>
-                        <th>Data dodania</th>
-                        <th>Temat</th>
-                        <th>Zawartość</th>
-                        <th>Osoba dodająca</th>
+            <div class="row">
+                <div class="col-12">
+                    <div class="user-block"></span>
+                    </div>
 
 
-                        </thead>
-                        <tbody>
-                        <c:forEach items="${news}" var="news">
-                            <tr>
-                                <td><c:out value="${news.dateString}"/></td>
-                                <td><c:out value="${news.subject}"/></td>
-                                <td><c:out value="${news.content}"/></td>
-                                <td><c:out value="${news.personNews.getNameAndSurname()}"/></td>
-
-                            </tr>
-                        </c:forEach>
-                        </tbody>
-                    </table>
+                    <c:forEach items="${news}" var="news">
+                        <div class="post clearfix">
+                            <div class="user-block"><span class="username"><a
+                                    href="#"><c:out value="${news.personNews}"/></a></span><span
+                                    class="description">Data dodania: <c:out value="${news.dateString}"/></span>
+                            </div>
+                            <p><c:out value="${news.subject}"/></p>
+                            <p><c:out value="${news.content}"/></p>
+                        </div>
 
 
+                    </c:forEach>
 
-                </div><!-- /.card-body -->
-                <div class="card-footer"><li class="nav-item has-treeview"><a href="/news/add" class="nav-link">
-                    <i class="nav-icon fas fa-copy"></i>
-                    <p>Dodaj </p></a></div><!-- /.card-footer--></div><!-- /.card --></section>
-        <!-- /.content --></div><!-- /.content-wrapper -->
-    <footer class="main-footer">
-        <div class="float-right d-none d-sm-block">
-    </footer><!-- Control Sidebar -->
-    <!-- Control sidebar content goes here --><!-- /.control-sidebar -->
+
+                </div>
+    </section><!-- /.content -->
 </div>
-<!-- ./wrapper --><!-- jQuery -->
+
 
 <%@ include file="../footer.jsp" %>

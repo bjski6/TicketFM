@@ -2,6 +2,7 @@ package myapp.controller;
 
 import myapp.model.*;
 import myapp.repository.*;
+import myapp.utils.DateConvert;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.time.format.DateTimeParseException;
 import java.util.List;
 import java.util.Optional;
 
@@ -38,6 +40,7 @@ public class TicketController {
     @GetMapping("/ticket/list")
     public String listTicket(Model model) {
         List<Ticket> tickets = repositoryTicket.findAll();
+       // tickets.sort((t1,t2) -> t1.getDateAdd().compareTo(t2.getDateAdd()));
         model.addAttribute("tickets", tickets);
         return "ticket/list";
 
@@ -56,12 +59,19 @@ public class TicketController {
             return "ticket/add";
         }
         ticket.prePersist();
-        ticket.setLocalDate();
-        ticket.setFormatDate();
+       try {
+           ticket.setPlannedFinishDate(DateConvert.setStringToDate(ticket.getPlannedFinishDateString()));
+           ticket.setDateAddString(DateConvert.setDateToString(ticket.getDateAdd()));
+       }
+       catch (DateTimeParseException dtp){
+           return "timeError";
+       }
         Optional<Person> person = repositoryPerson.findById((Long) session.getAttribute("id"));
         ticket.setPersonTicket(person.get());
-        Optional<Person> defaultPerson = repositoryPerson.findById(5L);
+
+        Optional<Person> defaultPerson = repositoryPerson.findById(1L);
         ticket.setPersonResponsibleTicket(defaultPerson.get());
+
         Optional<Status> defaultStatus = repositoryStatus.findById(1L);
         ticket.setStatus(defaultStatus.get());
 
@@ -79,6 +89,13 @@ public class TicketController {
         return "ticket/details";
     }
 
+   /* @GetMapping("/ticket/delegate")
+    public String delegateTicket (@ModelAttribute Ticket ticket, HttpSession session){
+        Optional<Person> person = repositoryPerson.findById((Long) session.getAttribute("id"));
+        ticket.setPersonResponsibleTicket(person.get());
+        return "redirect: /ticket/list";
+    }*/
+
     @GetMapping("/ticket/edit/{id}")
     public String editTicket(@PathVariable Long id, Model model) {
         Optional<Ticket> ticket = repositoryTicket.findById(id);
@@ -87,7 +104,17 @@ public class TicketController {
     }
 
     @PostMapping("ticket/edited")
-    public String editedTicket(@ModelAttribute Ticket ticket){
+    public String editedTicket(@ModelAttribute Ticket ticket, HttpSession session){
+        if(!(ticket.getPersonResponsibleTicket().equals(repositoryPerson.findById(1L)))){
+
+            Optional<Status> status =repositoryStatus.findById(2L);
+            ticket.setStatus(status.get());
+
+            Optional<Person> person = repositoryPerson.findById((Long) session.getAttribute("id"));
+            ticket.setPersonTicket(person.get());
+
+        }
+        ticket.setDateAddString(ticket.getDateAddString());
         repositoryTicket.save(ticket);
         return "redirect: /ticket/list";
     }
@@ -109,8 +136,8 @@ public class TicketController {
         return repositoryInstallation.findAll();
     }
 
-    @ModelAttribute("ticketStatusList")
-    public List<Status> ticketStatusList(){
+    @ModelAttribute("statusList")
+    public List<Status> statusList(){
         return repositoryStatus.findAll();
     }
 

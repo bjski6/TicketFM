@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.List;
 
 @NoArgsConstructor
@@ -20,6 +21,7 @@ public class Company {
     private Long id;
 
     //nazwa firmy
+    @NotBlank(message = "Wprowadź nazwę")
     private String name;
 
     // typ firmy najemca/obsługa techniczna/ serwis sprzątający/ właściciel
@@ -28,7 +30,7 @@ public class Company {
     private CompanyType companyType;
 
     @OneToMany(mappedBy = "companyPerson")
-    private List <Person> companyPersonList;
+    private List<Person> companyPersonList;
 
 //    @OneToMany (mappedBy = "companyTicket")
 //    private List <Ticket> companyTicketList;
@@ -37,7 +39,7 @@ public class Company {
 //    private List <Inspection> companyInspectionList;
 
     @Override
-    public String toString(){
+    public String toString() {
         return name;
     }
 }

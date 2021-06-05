@@ -3,7 +3,10 @@ package myapp.controller;
 
 import myapp.model.Company;
 import myapp.model.Person;
+import myapp.repository.RepositoryCompany;
 import myapp.repository.RepositoryPerson;
+import myapp.utils.BCrypt;
+import org.springframework.orm.jpa.JpaSystemException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -17,12 +20,14 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
-public class ContactsController {
+public class UsersController {
 
     private final RepositoryPerson repositoryPerson;
+    private final RepositoryCompany repositoryCompany;
 
-    public ContactsController(RepositoryPerson repositoryPerson) {
+    public UsersController(RepositoryPerson repositoryPerson, RepositoryCompany repositoryCompany) {
         this.repositoryPerson = repositoryPerson;
+        this.repositoryCompany = repositoryCompany;
     }
 
     @GetMapping("/user/list")
@@ -30,6 +35,23 @@ public class ContactsController {
         List<Person> personList = repositoryPerson.findAll();
         model.addAttribute("people", personList);
         return "user/list";
+    }
+
+    @GetMapping("/user/add")
+    public String addFormUser(Model model){
+        Person person =new Person();
+        model.addAttribute("person", person);
+        return "user/add";
+    }
+
+    @PostMapping("/user/add")
+    public String addUser(@ModelAttribute @Valid Person person, BindingResult result){
+        if(result.hasErrors()){
+            return "user/add";
+        }
+        person.setPassword(BCrypt.hashpw(person.getPassword(), BCrypt.gensalt()));
+        repositoryPerson.save(person);
+        return "redirect: /user/list";
     }
 
     @GetMapping("start/contact/list")
@@ -47,17 +69,30 @@ public class ContactsController {
     }
 
     @PostMapping("/user/edited")
-    public String editPostPerson(@ModelAttribute @Valid Person person, Company company, BindingResult result) {
+    public String editPostPerson(@ModelAttribute @Valid Person person, BindingResult result, Company company) {
         if (result.hasErrors()) {
             return "user/edit";
         }
+        person.setPassword(BCrypt.hashpw(person.getPassword(), BCrypt.gensalt()));
         repositoryPerson.save(person);
         return "redirect:/user/list";
     }
 
     @GetMapping("/user/delete/{id}")
     public String deleteUser(@PathVariable Long id) {
-        repositoryPerson.deleteById(id);
+       try {
+
+           repositoryPerson.deleteById(id);
+       }
+       catch (JpaSystemException s){
+           return "deleteError";
+       }
         return "redirect:/user/list";
+    }
+
+
+    @ModelAttribute("companyList")
+    public List<Company> companyList(){
+        return repositoryCompany.findAll();
     }
 }

@@ -26,7 +26,8 @@
     <div class="card">
         <div class="card-body login-card-body"><p class="login-box-msg">
             <td>Zły login lub hasło</td>
-            <td>Spróbuj ponownie</td>
+            <br>
+            Spróbuj ponownie
         </p>
 
                 <div class="row" >

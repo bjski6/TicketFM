@@ -8,7 +8,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Nowa Definicja</h1></div>
+                    <h1>Definicja przeglądu</h1></div>
             </div>
         </div><!-- /.container-fluid --></section><!-- Main content -->
     <section class="content"><!-- Default box -->
@@ -47,18 +47,18 @@
                     <br>
 
                     <label for="startInspectionString">Data rozpoczęcia cyklu</label>
-                    <form:input path="startInspectionString" id="startInspectionString"/>
+                    <form:input path="startInspectionString" id="startInspectionString" placeholder="DD.MM.YYYY HH:MM"/>
                     <form:errors path="startInspectionString" cssClass="error"/>
                     <br>
 
                     <label for="endInspectionString">Data zakończenia cykluu</label>
-                    <form:input path="endInspectionString" id="endInspectionString"/>
+                    <form:input path="endInspectionString" id="endInspectionString" placeholder="DD.MM.YYYY HH:MM"/>
                     <form:errors path="endInspectionString" cssClass="error"/>
                     <br>
 
 
-                    <label for="inspectionDuration">Czas trwania przeglądu</label>
-                    <form:input path="inspectionDuration" id="inspectionDuration"/>
+                    <label for="inspectionDuration">Czas trwania przeglądu (dni)</label>
+                    <form:input type="number" path="inspectionDuration" id="inspectionDuration" />
                     <form:errors path="inspectionDuration" cssClass="error"/>
                     <br>
 

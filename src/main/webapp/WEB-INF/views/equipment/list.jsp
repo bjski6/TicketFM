@@ -35,7 +35,7 @@
             <td><c:out value="${equipment.manufacturer}"/></td>
             <td><c:out value="${equipment.equipmentStatus}"/></td>
             <td><c:out value="${equipment.installation}"/></td>
-            <td><a href="edit/${equipment.id}">Edytuj</a> </td>
+            <td><a href="edit/${equipment.id}"><input type="button" value="Edytuj"></a> </td>
         </tr>
     </c:forEach>
     </tbody>

@@ -22,9 +22,6 @@ insert into Installation (name) value ("Inne");
 insert into EquipmentStatus (equipmentStatus) value ("W ruchu");
 insert into EquipmentStatus (equipmentStatus) value ("Zdemontowane");
 
-insert into StatusTicket (statusTicket) value ("Otwarte");
-insert into StatusTicket (statusTicket) value ("Zamknięte");
-insert into StatusTicket (statusTicket) value ("Zawieszone");
 
 insert into PermissionsPerson (permission) value ("administrator");
 insert into PermissionsPerson (permission) value ("user");

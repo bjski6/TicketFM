@@ -3,6 +3,7 @@ package myapp.model;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -19,6 +20,7 @@ public class Ticket {
     private Long id;
 
     //temat zgłoszenia
+    @NotBlank(message = "Wpisz temat zgłoszenia")
     private String subject;
 
     //opis zgłoszenia
@@ -36,7 +38,7 @@ public class Ticket {
     //planowana data wykonania
     private LocalDateTime plannedFinishDate;
 
-    private String dateFromFormString;
+    private String plannedFinishDateString;
 
     //firma, lokalizacja, kto zgłasza usterkę
     @ManyToOne
@@ -71,7 +73,7 @@ public class Ticket {
     @Transient
     public void setLocalDate(){
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
-        plannedFinishDate = LocalDateTime.parse(dateFromFormString, dtf);
+        plannedFinishDate = LocalDateTime.parse(plannedFinishDateString, dtf);
     }
 
 

@@ -14,7 +14,9 @@ public class DateConvert {
         return dateString;
     }
 
-    public static LocalDateTime setStringTolDate(String dateString){
+
+
+    public static LocalDateTime setStringToDate(String dateString){
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
         LocalDateTime date = LocalDateTime.parse(dateString, dtf);
         return date;

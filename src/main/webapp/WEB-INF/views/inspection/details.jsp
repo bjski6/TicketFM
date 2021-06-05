@@ -20,8 +20,8 @@
                     <thead>
                     <th>Nr</th>
                     <th>Temat</th>
-                    <th>Status</th>
                     <th>Czas trwania (dni)</th>
+                    <th>Typ (cykl)</th>
                     <th>System</th>
                     <th>Zgłaszający</th>
                     <th>Odpowiedzialny</th>
@@ -34,16 +34,16 @@
 
                         <td><c:out value="${inspection.id}"/></td>
                         <td><c:out value="${inspection.subject}"/></td>
-                        <td><c:out value="${inspection.status}"/></td>
                         <td><c:out value="${inspection.inspectionDuration}"/></td>
+                        <td><c:out value="${inspection.inspectionCycle}"/></td>
                         <td><c:out value="${inspection.installationInspection}"/></td>
                         <td><c:out value="${inspection.ownerPerson}"/></td>
                         <td><c:out value="${inspection.inspectionResponsiblePerson.getNameAndSurname()}"/></td>
                         <td><c:out value="${inspection.inspectionCompany}"/></td>
 
 
-
-                        <td><a href="/inspection/generate/${inspection.id}">Generuj przeglądy</a></td>
+                        <td><a href="/inspection/generate/${inspection.id}"><input type="button"
+                                                                                   value="Dodaj nowe przeglądy"></a></td>
                     </tr>
 
                     </tbody>

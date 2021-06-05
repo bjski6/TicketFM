@@ -15,33 +15,38 @@
         <div class="card">
             <div class="card-body">
 
-
-                <table border="2">
+                <table class="table table-striped projects">
                     <thead>
-                    <th>Nazwa Firmy</th>
-                    <th>Typ</th>
+                    <tr>
+
+                        <th style="width: 40%">Nazwa firmy</th>
+                        <th style="width: 30%">Typ</th>
+                    </tr>
                     </thead>
                     <tbody>
 
-                    <c:forEach items="${company}" var="company">
+
+                    <c:forEach items="${company}" var="company" >
                     <tr>
+
                         <td><c:out value="${company.name}"/></td>
                         <td><c:out value="${company.companyType}"/></td>
-                        <td><a href="delete/${company.id}">Usuń</a></td>
+                        <td><a href="delete/${company.id}"><input type="button" value="Usuń"></a> </td>
+
                     </tr>
                     </c:forEach>
                     </tbody>
                 </table>
 
             </div><!-- /.card-body -->
-            <div class="card-footer">
-                <li class="nav-item has-treeview"><a href="/company/add" class="nav-link">
-                    <i class="nav-icon fas fa-copy"></i>
-                    <p>Dodaj </p></a>
+            <div class="card-header">
+                <a href="/company/add" class="nav-link">
+                    <input type="button" value="Dodaj firmę"></i>
+                    </a>
             </div><!-- /.card-footer--></div><!-- /.card --></section>
     <!-- /.content --></div>
 <!-- /.content-wrapper -->
-<footer class="main-footer">
+<footer class="main-header">
     <div class="float-right d-none d-sm-block">
 </footer>
 <!-- Control Sidebar -->
@@ -50,3 +55,4 @@
 <!-- ./wrapper --><!-- jQuery -->
 
 <%@ include file="../footer.jsp" %>
+

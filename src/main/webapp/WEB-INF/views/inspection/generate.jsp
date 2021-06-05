@@ -17,12 +17,10 @@
                 <form:form method="post" modelAttribute="inspection" action="/inspection/generate">
                     <p hidden><form:input path="id" id="id"/></p>
 
-                    <td>Cykl</td>
-                    <c:out value="${inspection.inspectionCycle}"/>
-                    <br>
+
 
                     <label for="startInspectionString">Początek cyklu</label>
-                    <form:input path="startInspectionString" id="startInspectionString"/>
+                    <form:input path="startInspectionString" id="startInspectionString" />
                     <form:errors path="startInspectionString" cssClass="error"/>
                     <br>
 
@@ -33,6 +31,10 @@
 
 
 <p hidden>
+                    <td>Cykl</td>
+                    <c:out value="${inspection.inspectionCycle}"/>
+                    <br>
+
                     <label for="subject">Temat</label>
                     <form:input path="subject" id="subject"/>
                     <form:errors path="subject" cssClass="error"/>

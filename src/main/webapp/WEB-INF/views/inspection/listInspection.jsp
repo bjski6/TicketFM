@@ -8,7 +8,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Lista definicji</h1></div>
+                    <h1>Lista przeglądów</h1></div>
             </div>
         </div><!-- /.container-fluid --></section><!-- Main content -->
     <section class="content"><!-- Default box -->
@@ -43,7 +43,7 @@
                             <td><c:out value="${inspection.dateAddString}"/></td>
                             <td><c:out value="${inspection.inspectionResponsiblePerson.getNameAndSurname()}"/></td>
                             <td><c:out value="${inspection.inspectionCompany}"/></td>
-                            <td><a href="details/${inspection.id}">Szczegóły</a></td>
+                            <td><a href="details/${inspection.id}"><input type="button" value="Szczegóły"></a></td>
                         </tr>
 
                                 <%--                            <td><a href="details/${ticket.id}">Szczegóły</a></td>--%>

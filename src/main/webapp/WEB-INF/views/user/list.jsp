@@ -15,30 +15,32 @@
         <div class="card">
             <div class="card-body">
 
-                    <table border="2">
-                        <thead>
-                        <th>Imie</th>
-                        <th>Nazwisko</th>
-                        <th>email</th>
-                        <th>Hasło</th>
-                        <th>Nr telefonu</th>
+                <table border="2">
+                    <thead>
+                    <th>Imie</th>
+                    <th>Nazwisko</th>
+                    <th>Email</th>
+                    <th>Nr telefonu</th>
+                    <th>Firma</th>
 
 
-                        </thead>
-                        <tbody>
-                        <c:forEach items="${people}" var="person">
-                            <tr>
-                                <td><c:out value="${person.name}"/></td>
-                                <td><c:out value="${person.surname}"/></td>
-                                <td><c:out value="${person.email}"/></td>
-                                <td><c:out value="${person.password}"/></td>
-                                <td><c:out value="${person.phoneNumber}"/></td>
-                                <td><a href="edit/${person.id}"><input type="button" value="Edytuj"></a></td>
-                                <td><a href="delete/${person.id}"> <input type="button" value="Usuń użytkownika"></a></td>
+                    </thead>
+                    <tbody>
+                    <c:forEach items="${people}" var="person">
+                        <tr>
+                            <td><c:out value="${person.name}"/></td>
+                            <td><c:out value="${person.surname}"/></td>
+                            <td><c:out value="${person.email}"/></td>
+                            <td><c:out value="${person.phoneNumber}"/></td>
+                            <td><c:out value="${person.companyPerson}"/></td>
 
-                            </tr>
-                        </c:forEach>
-                        </tbody>
+                            <td><a href="edit/${person.id}"><input type="button" value="Edytuj"></a></td>
+                            <td><a href="delete/${person.id}"> <input type="button" value="Usuń użytkownika"></a></td>
+
+                        </tr>
+                    </c:forEach>
+                    </tbody>
+                    <td><a href="../user/add"><input type="button" value="Dodaj nowego użytkownika"></a></td>
 
 
 <%@ include file="../footer.jsp" %>

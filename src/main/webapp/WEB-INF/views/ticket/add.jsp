@@ -41,13 +41,13 @@
                 <br>
 
                     <label for="description">Opis zgłoszenia</label>
-                    <form:input path="description" id="description"/>
+                    <form:input path="description" id="description" class="form-control" rows="4" col="4"/>
                     <form:errors path="description" cssClass="error"/>
                 <br>
 
-                    <label for="dateFromFormString">Planowana data wyk.</label>
-                    <form:input path="dateFromFormString" id="dateFromFormString"/>
-                    <form:errors path="dateFromFormString" cssClass="error"/>
+                    <label for="plannedFinishDateString">Planowana data wyk.</label>
+                    <form:input path="plannedFinishDateString" id="plannedFinishDateString" placeholder="DD.MM.YYYY HH:MM"/>
+                    <form:errors path="plannedFinishDateString" cssClass="error"/>
                 <br>
 
                 <input type="submit" value="Dodaj">

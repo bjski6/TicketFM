@@ -14,9 +14,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.time.format.DateTimeParseException;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Controller
 public class InspectionController {
@@ -44,9 +45,7 @@ public class InspectionController {
     @GetMapping("/inspection/list")
     public String listInspection(Model model) {
         List<Inspection> inspections = repositoryInspection.findByInspectionTypeId(1);
-//        inspections.stream()
-//                .filter(inspection -> inspection.getInspectionType().getId().equals(1))
-//                .collect(Collectors.toList());
+        inspections.sort((i1, i2) -> i1.getStartInspection().compareTo(i2.getStartInspection()));
 
         model.addAttribute("inspections", inspections);
         return "inspection/list";
@@ -55,12 +54,11 @@ public class InspectionController {
     @GetMapping("/inspection/listInspection")
     public String listListInspection(Model model) {
         List<Inspection> inspections = repositoryInspection.findByInspectionTypeId(2);
-//        inspections.stream()
-//                .filter(inspection -> inspection.getInspectionType().getId().equals(1))
-//                .collect(Collectors.toList());
+        inspections.sort(Comparator.comparing(Inspection::getStartInspection));
+
 
         model.addAttribute("inspections", inspections);
-        return "inspection/list";
+        return "inspection/listInspection";
     }
 
     //dodaj definicje
@@ -80,30 +78,46 @@ public class InspectionController {
         }
 
         inspection.prePersist();
+
         Optional<Person> person = repositoryPerson.findById((Long) session.getAttribute("id"));
         inspection.setOwnerPerson(person.get());
+
         Optional<Status> defaultStatus = repositoryStatus.findById(1L);
         inspection.setStatus(defaultStatus.get());
+
         Optional<InspectionType> definition = repositoryInspectionType.findById(1L);
         inspection.setInspectionType(definition.get());
-        inspection.setStartInspection(DateConvert.setStringTolDate(inspection.getStartInspectionString()));
-        inspection.setEndInspection(DateConvert.setStringTolDate(inspection.getEndInspectionString()));
-        inspection.setDateAddString(DateConvert.setDateToString(inspection.getDateAdd()));
+        try {
+            inspection.setStartInspection(DateConvert.setStringToDate(inspection.getStartInspectionString()));
+            inspection.setEndInspection(DateConvert.setStringToDate(inspection.getEndInspectionString()));
+            inspection.setDateAddString(DateConvert.setDateToString(inspection.getDateAdd()));
+        } catch (DateTimeParseException d) {
+            return "timeErrorInspAdd";
+        }
+        if (inspection.getInspectionDuration() == null) {
+            inspection.setInspectionDuration("1");
+        }
         repositoryInspection.save(inspection);
-//        while (inspection.getStartInspection().isBefore(inspection.getEndInspection())) {
-//            {
-//                System.out.println("======================" + inspection.getInspectionCycle().getCycle());
-//                System.out.println("======================" + inspection.getInspectionCycle());
-//                System.out.println("=================" + inspection.getInstallationInspection().getName());
-//                inspection.setStartInspection(inspection.getStartInspection().plusDays(1));
-//                inspection.setId(inspection.getId() + 1);
-//                repositoryInspection.save(inspection);
-//            }
 
 
         return "redirect: /inspection/list";
 
     }
+
+    @GetMapping("/inspection/edit/{id}")
+    public String editInspection(@PathVariable Long id, Model model) {
+        Optional<Inspection> inspection = repositoryInspection.findById(id);
+        model.addAttribute("inspection", inspection.get());
+        return "inspection/add";
+    }
+
+    @PostMapping("/inspection/edited")
+    public String editedInspection(@ModelAttribute Inspection inspection, HttpSession session) {
+        Optional<Person> person = repositoryPerson.findById((Long) session.getAttribute("id"));
+        inspection.setOwnerPerson(person.get());
+        return "inspection/list";
+    }
+
 
     @GetMapping("/inspection/details/{id}")
     public String detailsInspection(@PathVariable Long id, Model model) {
@@ -120,26 +134,57 @@ public class InspectionController {
     }
 
     @PostMapping("/inspection/generate")
-    public String generatedInspection(@ModelAttribute Inspection inspection, InspectionCycle inspectionCycle) {
+    public String generatedInspection(@ModelAttribute Inspection inspection, InspectionCycle inspectionCycle, HttpSession session) {
         inspection.prePersist();
-        inspection.setStartInspection(DateConvert.setStringTolDate(inspection.getStartInspectionString()));
-        inspection.setEndInspection(DateConvert.setStringTolDate(inspection.getEndInspectionString()));
-        inspection.setDateAddString(DateConvert.setDateToString(inspection.getDateAdd()));
+        try {
+            inspection.setStartInspection(DateConvert.setStringToDate(inspection.getStartInspectionString()));
+            inspection.setEndInspection(DateConvert.setStringToDate(inspection.getEndInspectionString()));
+            inspection.setDateAddString(DateConvert.setDateToString(inspection.getDateAdd()));
+        } catch (DateTimeParseException e) {
+            return "timeErrorInsp";
+        }
         inspection.setInspectionCycle(inspection.getInspectionCycle());
         inspection.setInspectionCycle(repositoryInspection.findById(inspection.getId()).get().getInspectionCycle());
+
         Optional<InspectionType> inspectionType = repositoryInspectionType.findById(2L);
         inspection.setInspectionType(inspectionType.get());
-        while (inspection.getStartInspection().isBefore(inspection.getEndInspection())) {
 
-            if (inspection.getInspectionCycle().getCycle().equals("D")) {
+        Optional<Person> person = repositoryPerson.findById((Long) session.getAttribute("id"));
+        inspection.setOwnerPerson(person.get());
+
+        Optional <Status> status = repositoryStatus.findById(1L);
+        inspection.setStatus(status.get());
+
+        while (inspection.getStartInspection().isBefore(inspection.getEndInspection())) {
+            repositoryInspection.save(inspection);
+            if (inspection.getInspectionCycle().getId().equals(1L)) {
                 System.out.println("======================" + inspection);
                 inspection.setStartInspection(inspection.getStartInspection().plusDays(1));
                 inspection.setStartInspectionString(DateConvert.setDateToString(inspection.getStartInspection()));
                 inspection.setId((long) repositoryInspection.findAll().size() + 1);
                 repositoryInspection.save(inspection);
-            } else if (inspection.getInspectionCycle().getCycle().equals("M")) {
+            } else if (inspection.getInspectionCycle().getId().equals(2L)) {
+                System.out.println("======================" + inspection);
+                inspection.setStartInspection(inspection.getStartInspection().plusWeeks(1));
+                inspection.setStartInspectionString(DateConvert.setDateToString(inspection.getStartInspection()));
+                inspection.setId((long) repositoryInspection.findAll().size() + 1);
+                repositoryInspection.save(inspection);
+            } else if (inspection.getInspectionCycle().getId().equals(3L)) {
                 System.out.println("======================" + inspection);
                 inspection.setStartInspection(inspection.getStartInspection().plusMonths(1));
+                inspection.setStartInspectionString(DateConvert.setDateToString(inspection.getStartInspection()));
+                inspection.setId((long) repositoryInspection.findAll().size() + 1);
+                repositoryInspection.save(inspection);
+            } else if (inspection.getInspectionCycle().getId().equals(4L)) {
+                System.out.println("======================" + inspection);
+                inspection.setStartInspection(inspection.getStartInspection().plusMonths(3));
+                inspection.setStartInspectionString(DateConvert.setDateToString(inspection.getStartInspection()));
+                inspection.setId((long) repositoryInspection.findAll().size() + 1);
+                repositoryInspection.save(inspection);
+            } else if (inspection.getInspectionCycle().getId().equals(5L)) {
+                System.out.println("======================" + inspection);
+                inspection.setStartInspection(inspection.getStartInspection().plusYears(1));
+                inspection.setStartInspectionString(DateConvert.setDateToString(inspection.getStartInspection()));
                 inspection.setId((long) repositoryInspection.findAll().size() + 1);
                 repositoryInspection.save(inspection);
             }

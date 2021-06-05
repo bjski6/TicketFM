@@ -20,12 +20,9 @@
                     <thead>
                     <th>Nr</th>
                     <th>Temat</th>
-                    <th>Status</th>
                     <th>Data przeglądu</th>
                     <th>Czas trwania (dni)</th>
                     <th>System</th>
-                    <th>Zgłaszający</th>
-                    <th>Data dodania</th>
                     <th>Odpowiedzialny</th>
                     <th>Firma</th>
 
@@ -35,18 +32,16 @@
                         <tr>
                             <td><c:out value="${inspection.id}"/></td>
                             <td><c:out value="${inspection.subject}"/></td>
-                            <td><c:out value="${inspection.status}"/></td>
                             <td><c:out value="${inspection.startInspectionString}"/></td>
                             <td><c:out value="${inspection.inspectionDuration}"/></td>
                             <td><c:out value="${inspection.installationInspection}"/></td>
-                            <td><c:out value="${inspection.ownerPerson}"/></td>
-                            <td><c:out value="${inspection.dateAddString}"/></td>
                             <td><c:out value="${inspection.inspectionResponsiblePerson.getNameAndSurname()}"/></td>
                             <td><c:out value="${inspection.inspectionCompany}"/></td>
-                            <td><a href="details/${inspection.id}">Szczegóły</a></td>
+                            <td><a href="details/${inspection.id}"><input type="button" value="Szczegóły"></a></td>
+                            <td><a href="edit/${inspection.id}"><input type="button" value="Edycja"></a></td>
                         </tr>
 
-                                <%--                            <td><a href="details/${ticket.id}">Szczegóły</a></td>--%>
+                        <%--                            <td><a href="details/${ticket.id}">Szczegóły</a></td>--%>
                         </tr>
                     </c:forEach>
                     </tbody>

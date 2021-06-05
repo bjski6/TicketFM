@@ -35,8 +35,8 @@ public class News {
     private String dateString;
 
     //tytuł aktualności
-    @NotBlank
-    @Size(min = 2, max = 20)
+    @NotBlank(message = "Podaj temat")
+    @Size(min = 2, max = 30)
     private String subject;
 
     //zawartość aktualności

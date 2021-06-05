@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -31,12 +32,14 @@ public class NewsController {
     @GetMapping("news/list")
     public String listNews(Model model) {
         List<News> newsList = repositoryNews.findAll();
+        Collections.reverse(newsList);
+
         model.addAttribute("news", newsList);
         return "news/list";
     }
 
     @GetMapping("news/add")
-    public String addFormNews (Model model) {
+    public String addFormNews(Model model) {
         News news = new News();
         model.addAttribute("news", news);
         return "news/add";

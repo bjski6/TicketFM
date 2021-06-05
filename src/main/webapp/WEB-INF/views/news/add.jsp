@@ -11,25 +11,26 @@
                     <h1>Dodaj aktualność</h1></div>
             </div>
         </div><!-- /.container-fluid --></section><!-- Main content -->
-    <section class="content"><!-- Default box -->
-        <div class="card">
-            <div class="card-body">
+    <div class="col-md-6">
+        <div class="card card-primary">
+            <div class="card-header"><h3 class="card-title">Nowa aktualność</h3>
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip"
+                            title="Collapse"><i class="fas fa-minus"></i></button>
+                </div>
+            </div>
+            <div class="card-body"><form:form method="post" modelAttribute="news" action="/news/add">
+                <div class="form-group"><label for="inputName">Temat</label>
+                    <form:input path="subject" id="subject"/>
+                    <form:errors path="subject" cssClass="error" class="form-control"/>
+                </div>
 
-            <form:form method="post" modelAttribute="news" action="/news/add">
-    <p hidden><form:input path="id" id="id"/></p>
+                <div class="form-group"><label for="inputDescription">Treść</label>
+                    <form:input path="content" id="content" class="form-control" rows="4" col="4"/>
+                    <form:errors path="content" cssClass="error"/></div>
+                <input type="submit" value="Dodaj">
+            </form:form>
 
-    <label for="subject">Tytuł</label>
-    <form:input path="subject" id="subject"/>
-    <form:errors path="subject" cssClass="error"/>
+            </div><!-- /.card-body --></div><!-- /.card --></div>
 
-    <label for="content">Zawartość</label>
-    <form:input path="content" id="content"/>
-    <form:errors path="content" cssClass="error"/>
-    <br>
-
-    <input type="submit" value="Dodaj">
-</form:form>
-
-<!-- Page Wrapper -->
-
-                <%@ include file="../footer.jsp" %>
+    <%@ include file="../footer.jsp" %>

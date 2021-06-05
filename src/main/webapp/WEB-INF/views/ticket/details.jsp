@@ -44,10 +44,11 @@
                             <td><c:out value="${ticket.companyTicket}"/></td>
                             <td><c:out value="${ticket.personTicket.getNameAndSurname()}"/></td>
                             <td><c:out value="${ticket.dateAddString}"/></td>
-                            <td><c:out value="${ticket.dateFromFormString}"/></td>
+                            <td><c:out value="${ticket.plannedFinishDateString}"/></td>
                             <td><c:out value="${ticket.personResponsibleTicket.getNameAndSurname()}"/></td>
 
-                            <td><a href="/ticket/edit/${ticket.id}">Edytuj</a></td>
+                            <td><a href="/ticket/edit/${ticket.id}"><input type="button" value="Edytuj"></a></td>
+<%--                            <td><a href="/ticket/delegate"><input type="button" value="Deleguj do mnie"></a></td>--%>
                         </tr>
 
                     </tbody>

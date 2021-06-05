@@ -37,10 +37,10 @@
                             <td><c:out value="${ticket.installationTicket}"/></td>
                             <td><c:out value="${ticket.status}"/></td>
                             <td><c:out value="${ticket.dateAddString}"/></td>
-                            <td><c:out value="${ticket.dateFromFormString}"/></td>
+                            <td><c:out value="${ticket.plannedFinishDateString}"/></td>
                             <td><c:out value="${ticket.personResponsibleTicket.getNameAndSurname()}"/></td>
 
-                            <td><a href="details/${ticket.id}">Szczegóły</a></td>
+                            <td><a href="details/${ticket.id}"><input type="button" value="Szczegóły"></a></td>
                         </tr>
                     </c:forEach>
                     </tbody>
