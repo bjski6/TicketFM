@@ -8,11 +8,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6"><h1>Aktualności</h1></div>
-                <div class="card-footer"><a href="/news/add" ><input type="button" value="Dodaj">
+                <div class="right" ><a href="/news/add" ><input type="button" value="Dodaj">
                 </a>
 
                 </div>
-            </div><!-- /.container-fluid -->
+            </div>
+        </div><!-- /.container-fluid -->
     </section><!-- Main content -->
     <section class="content"><!-- Default box -->
         <div class="card">
@@ -37,6 +38,8 @@
 
 
                 </div>
+            </div>
+        </div>
     </section><!-- /.content -->
 </div>
 

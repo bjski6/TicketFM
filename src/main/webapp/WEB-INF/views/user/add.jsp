@@ -9,7 +9,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Edytuj użytkownika</h1></div>
+                    <h1>Nowy użytkownik</h1></div>
 
             </div>
         </div><!-- /.container-fluid --></section><!-- Main content -->
@@ -34,7 +34,7 @@
                     <form:errors path="email" cssClass="error"/>
                     <br>
                     <label for="password">Hasło</label>
-                    <form:input path="password" id="password"/>
+                    <form:input path="password" id="password" type="password"/>
                     <form:errors path="password" cssClass="error"/>
                     <br>
                     <label for="phoneNumber">Numer telefonu</label>

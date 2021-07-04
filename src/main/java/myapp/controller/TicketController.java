@@ -113,6 +113,7 @@ public class TicketController {
             Optional<Person> person = repositoryPerson.findById((Long) session.getAttribute("id"));
             ticket.setPersonTicket(person.get());
 
+
         }
         ticket.setDateAddString(ticket.getDateAddString());
         repositoryTicket.save(ticket);

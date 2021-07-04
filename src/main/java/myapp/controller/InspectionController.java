@@ -163,21 +163,22 @@ public class InspectionController {
                 inspection.setStartInspectionString(DateConvert.setDateToString(inspection.getStartInspection()));
                 inspection.setId((long) repositoryInspection.findAll().size() + 1);
                 repositoryInspection.save(inspection);
+
             } else if (inspection.getInspectionCycle().getId().equals(2L)) {
-                System.out.println("======================" + inspection);
-                inspection.setStartInspection(inspection.getStartInspection().plusWeeks(1));
-                inspection.setStartInspectionString(DateConvert.setDateToString(inspection.getStartInspection()));
-                inspection.setId((long) repositoryInspection.findAll().size() + 1);
-                repositoryInspection.save(inspection);
-            } else if (inspection.getInspectionCycle().getId().equals(3L)) {
                 System.out.println("======================" + inspection);
                 inspection.setStartInspection(inspection.getStartInspection().plusMonths(1));
                 inspection.setStartInspectionString(DateConvert.setDateToString(inspection.getStartInspection()));
                 inspection.setId((long) repositoryInspection.findAll().size() + 1);
                 repositoryInspection.save(inspection);
-            } else if (inspection.getInspectionCycle().getId().equals(4L)) {
+            } else if (inspection.getInspectionCycle().getId().equals(3L)) {
                 System.out.println("======================" + inspection);
                 inspection.setStartInspection(inspection.getStartInspection().plusMonths(3));
+                inspection.setStartInspectionString(DateConvert.setDateToString(inspection.getStartInspection()));
+                inspection.setId((long) repositoryInspection.findAll().size() + 1);
+                repositoryInspection.save(inspection);
+            }  else if (inspection.getInspectionCycle().getId().equals(4L)) {
+                System.out.println("======================" + inspection);
+                inspection.setStartInspection(inspection.getStartInspection().plusMonths(6));
                 inspection.setStartInspectionString(DateConvert.setDateToString(inspection.getStartInspection()));
                 inspection.setId((long) repositoryInspection.findAll().size() + 1);
                 repositoryInspection.save(inspection);

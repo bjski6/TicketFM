@@ -46,7 +46,7 @@
                 <br>
 
                     <label for="plannedFinishDateString">Planowana data wyk.</label>
-                    <form:input path="plannedFinishDateString" id="plannedFinishDateString" placeholder="DD.MM.YYYY HH:MM"/>
+                    <form:input type="datetime-local" path="plannedFinishDateString" id="plannedFinishDateString" />
                     <form:errors path="plannedFinishDateString" cssClass="error"/>
                 <br>
 

@@ -1,6 +1,6 @@
 package myapp.converter;
 
-import myapp.dao.InstallationDao;
+
 import myapp.model.Installation;
 
 

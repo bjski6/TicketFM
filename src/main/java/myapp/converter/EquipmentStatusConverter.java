@@ -1,7 +1,6 @@
 package myapp.converter;
 
 
-import myapp.dao.StatusEqDao;
 import myapp.model.EquipmentStatus;
 import myapp.repository.RepositoryEquipmentStatus;
 import org.springframework.beans.factory.annotation.Autowired;

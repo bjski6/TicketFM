@@ -45,5 +45,9 @@
                     </c:forEach>
                     </tbody>
                 </table>
+            </div>
+        </div>
+    </section>
+</div>
 
 <%@ include file="../footer.jsp" %>
