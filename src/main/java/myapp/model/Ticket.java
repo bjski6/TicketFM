@@ -5,6 +5,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -20,28 +21,20 @@ public class Ticket {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    //temat zgłoszenia
     @NotBlank(message = "Wpisz temat zgłoszenia")
     private String subject;
 
-    //opis zgłoszenia
     private String description;
 
-    //status zgłoszenia open/close/suspended
     @ManyToOne
     private Status status;
 
-    //data dodania zgłoszenia
-    private LocalDateTime dateAdd;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate dateAdd;
 
-    private String dateAddString;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate plannedFinishDate;
 
-    //planowana data wykonania
-    private LocalDateTime plannedFinishDate;
-
-    private String plannedFinishDateString;
-
-    //firma, lokalizacja, kto zgłasza usterkę
     @ManyToOne
     private Company companyTicket;
 
@@ -61,20 +54,18 @@ public class Ticket {
     private Installation installationTicket;
 
     @PrePersist
-    public void prePersist(){
-        dateAdd = LocalDateTime.now();
+    public void prePersist() {
+        dateAdd = LocalDate.now();
     }
 
     @Transient
-    public void setFormatDate(){
+    public void setFormatDate() {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
-        dateAddString = dtf.format(dateAdd);
     }
 
     @Transient
-    public void setLocalDate(){
+    public void setLocalDate() {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
-        plannedFinishDate = LocalDateTime.parse(plannedFinishDateString, dtf);
     }
 
 

@@ -85,7 +85,6 @@ public class AppConfig implements WebMvcConfigurer {
         registry.addConverter(getStatusConverter());
         registry.addConverter(getPersonConverter());
         registry.addConverter(getInspectionCycleConverter());
-        registry.addConverter(getInspectionTypeConverter());
     }
 
     @Bean
@@ -123,8 +122,5 @@ public class AppConfig implements WebMvcConfigurer {
         return new InspectionCycleConverter();
     }
 
-    @Bean
-    public InspectionTypeConverter getInspectionTypeConverter() {
-        return new InspectionTypeConverter();
-    }
+
 }

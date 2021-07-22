@@ -25,21 +25,17 @@ public class News {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    //osoba dodająca aktualność relacja jednokierunkowa
     @ManyToOne
     private Person personNews;
 
-    //data dodania aktualności
     private LocalDateTime dateAdd;
 
     private String dateString;
 
-    //tytuł aktualności
     @NotBlank(message = "Podaj temat")
     @Size(min = 2, max = 30)
     private String subject;
 
-    //zawartość aktualności
     @Size (max=500)
     private String content;
 

@@ -11,7 +11,6 @@ import javax.servlet.http.HttpSession;
 
 @Controller
 @SessionAttributes("id")
-//Gdzie zapisuje sesję- spytaj!!
 public class HomeController {
 
     private final RepositoryPerson repositoryPerson;

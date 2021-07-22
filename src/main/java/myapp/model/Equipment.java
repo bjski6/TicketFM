@@ -21,16 +21,13 @@ public class Equipment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    //nazwa urządzenia
-    @NotBlank(message = "Wprowadź nazwę")
+    @NotBlank(message = "Wprowadź nazwę urządzenia")
     @Size(min = 2, max = 50)
     private String name;
 
-    // model
     @Size(min = 2, max = 30)
     private String model;
 
-    //numer seryjny
     @Size(max = 20)
     private String serialNo;
 
@@ -40,7 +37,6 @@ public class Equipment {
     @ManyToOne
     private Installation installation;
 
-    // w użyciu/zdemontowane  running / dismounted
     @ManyToOne
     private EquipmentStatus equipmentStatus;
 

@@ -1,6 +1,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
+<html>
 <%@ include file="../header.jsp" %>
 
 <div class="content-wrapper"><!-- Content Header(Page header) -->
@@ -19,4 +21,8 @@
 
 
 
-<%@ include file="../footer.jsp" %>
+    </section>
+</div>
+</body>
+</html>
+

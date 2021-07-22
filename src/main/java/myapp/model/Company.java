@@ -20,23 +20,14 @@ public class Company {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    //nazwa firmy
-    @NotBlank(message = "Wprowadź nazwę")
+    @NotBlank(message = "Wprowadź nazwę firmy")
     private String name;
-
-    // typ firmy najemca/obsługa techniczna/ serwis sprzątający/ właściciel
 
     @ManyToOne
     private CompanyType companyType;
 
     @OneToMany(mappedBy = "companyPerson")
     private List<Person> companyPersonList;
-
-//    @OneToMany (mappedBy = "companyTicket")
-//    private List <Ticket> companyTicketList;
-
-//    @OneToMany(mappedBy = "companyInspection")
-//    private List <Inspection> companyInspectionList;
 
     @Override
     public String toString() {

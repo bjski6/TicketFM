@@ -10,5 +10,18 @@
       </list>
     </option>
   </component>
+  <component name="ProjectPlainTextFileTypeManager">
+    <file url="file://$PROJECT_DIR$/src/main/webapp/resources/css/fontawesome-free/css/brands.css" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/resources/css/fontawesome-free/css/fontawesome.css" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/resources/css/fontawesome-free/css/regular.css" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/resources/css/fontawesome-free/css/solid.css" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/resources/css/fontawesome-free/css/svg-with-js.css" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/resources/css/fontawesome-free/css/v4-shims.css" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/resources/js/demo.js" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/resources/js/jquery/core.js" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/resources/js/jquery/jquery.slim.js" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/equipment/details.jsp" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/footer.jsp" />
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_16" default="true" project-jdk-name="openjdk-16" project-jdk-type="JavaSDK" />
 </project>

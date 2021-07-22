@@ -1,10 +1,13 @@
 package myapp.model;
 
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.Future;
 import javax.validation.constraints.NotBlank;
 import java.time.Duration;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @NoArgsConstructor
@@ -20,7 +23,7 @@ public class Inspection {
     private Long id;
 
     //nazwa przeglądu
-    @NotBlank (message = "Podaj nazwę")
+    @NotBlank(message = "Podaj nazwę")
     private String subject;
 
     //status (otwarte/anulowane/wykonane/zakończone)
@@ -32,32 +35,35 @@ public class Inspection {
     private Installation installationInspection;
 
     // data dodania przeglądu
-    private LocalDateTime dateAdd;
-    private String dateAddString;
+    private LocalDate dateAdd;
+
+    // private String dateAddString;
 
     //data rozpoczęcia cyklu
 
-    private LocalDateTime startInspection;
 
-    @NotBlank (message = "Podaj datę rozpoczęcia cyklu")
-    private String startInspectionString;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate startInspection;
+
+//    @NotBlank (message = "Podaj datę rozpoczęcia cyklu")
+//    private String startInspectionString;
 
 
-    private String inspectionDuration;
+    private Long inspectionDuration;
 
-    //data zakończenia cyklu
-    private LocalDateTime endInspection;
+    //data zakończenia przeglądu
+    private LocalDate endInspection;
 
-    @NotBlank (message = "Podaj datę zakończenia cyklu")
-    private String endInspectionString;
+//    @NotBlank(message = "Podaj datę zakończenia cyklu")
+//    private String endInspectionString;
 
-    //interwał wygenerowania przeglądów (tydzień, miesiąc, kwartał, półrocze, rok)
+//    //interwał wygenerowania przeglądów (tydzień, miesiąc, kwartał, półrocze, rok)
     @ManyToOne
     private InspectionCycle inspectionCycle;
 
     //ilość dni przypominających o wykonaniu przeglądu- wyświetli dashboard
-    @ManyToOne
-    private InspectionType inspectionType;
+//    @ManyToOne
+//    private InspectionType inspectionType;
 
     //firma/lokalizacja wykonania przeglądu urządzenia
     @ManyToOne
@@ -73,7 +79,12 @@ public class Inspection {
 
     @PrePersist
     public void prePersist() {
-        dateAdd = LocalDateTime.now();
+        dateAdd = LocalDate.now();
+    }
+
+    @Transient
+    public void endInspection() {
+        endInspection = startInspection.plusDays(inspectionDuration);
     }
 
 //    @Transient

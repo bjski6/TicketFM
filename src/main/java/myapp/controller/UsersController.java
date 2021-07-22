@@ -54,11 +54,11 @@ public class UsersController {
         return "redirect: /user/list";
     }
 
-    @GetMapping("start/contact/list")
+    @GetMapping("contact/list")
     public String listStartContacts(Model model) {
         List<Person> personList = repositoryPerson.findAll();
         model.addAttribute("people", personList);
-        return "start/contact/list";
+        return "contact/list";
     }
 
     @GetMapping("/user/edit/{id}")
@@ -81,7 +81,6 @@ public class UsersController {
     @GetMapping("/user/delete/{id}")
     public String deleteUser(@PathVariable Long id) {
        try {
-
            repositoryPerson.deleteById(id);
        }
        catch (JpaSystemException s){

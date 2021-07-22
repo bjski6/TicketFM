@@ -12,7 +12,7 @@ public interface RepositoryPerson extends JpaRepository <Person, Long> {
 }
 
 
-// query do szukaj
+// query to search
 // @Query (value = "select * from Person where email = %bjsk% ", nativeQuery = true)
 //    Person findByEmail(String email);
 //}

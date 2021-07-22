@@ -86,11 +86,5 @@ public class EquipmentController {
         return repositoryEquipmentStatus.findAll();
     }
 
-//public List <String> search(String searchFraze){
-//        return repository.findAll().stream()
-//                .map(equipment -> equipment.getName())
-//                .filter(name -> name.contains(searchFraze))
-//                .collect(Collectors.toList());
-//}
 
 }

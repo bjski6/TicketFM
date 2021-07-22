@@ -34,6 +34,10 @@
       <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
+      <excludeFolder url="file://$MODULE_DIR$/src/main/webapp/resources/plugins/bootstrap" />
+      <excludeFolder url="file://$MODULE_DIR$/src/main/webapp/resources/css/alt" />
+      <excludeFolder url="file://$MODULE_DIR$/src/main/webapp/resources/img/credit" />
+      <excludeFolder url="file://$MODULE_DIR$/src/main/webapp/resources/js/pages" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="inheritedJdk" />

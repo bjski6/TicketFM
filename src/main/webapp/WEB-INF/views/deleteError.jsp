@@ -4,47 +4,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <style>
-    .error {
-      color: red;
-    }
-  </style>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>TicketFM</title><!-- Tell the browser to be responsive to screen width -->
-  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Font Awesome -->
-  <link rel="stylesheet" href="<c:url value="/resources/plugins/fontawesome-free/css/all.min.css"/>"><!-- Ionicons -->
-  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-  <!-- overlayScrollbars -->
-  <link rel="stylesheet" href="<c:url value="/resources/dist/css/adminlte.min.css"/>">
-  <!-- Google Font:Source Sans Pro -->
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>TicketFM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="<c:url value="/resources/css/fontawesome-free/css/all.min.css"/>">
+    <link rel="stylesheet" href="<c:url value="/resources/css/adminlte.min.css"/>">
+    <script src="<c:url value="/resources/js/jquery/jquery.min.js"/>" defer></script>
+    <script src="<c:url value="/resources/js/adminlte.min.js"/>" defer></script>
+    <link rel="stylesheet" href="<c:url value="/resources/style.css"/>">
 </head>
 <body class="hold-transition login-page">
 <div class="login-box">
-  <div class="login-logo"><b>Ticket</b>FM</div><!-- /.login-logo -->
-  <div class="card">
-    <div class="card-body login-card-body"><p class="login-box-msg">
-      <td>Nie można usunąć odpowiedzialnego użytkownika</td>
-      <br>
-      </p>
-
-      <div class="row" >
-        <div class="col-4">
-          <a href="/user/list"> <button type="submit" class="btn btn-block btn-danger">OK</button></a>
-        </div><!-- /.col -->
-      </div>
-
-      <!-- /.login-card-body -->
+    <div class="login-logo"><b>Ticket</b>FM</div>
+    <div class="card">
+        <div class="card-body login-card-body"><p class="login-box-msg">
+            <td>Nie można usunąć odpowiedzialnego użytkownika</td>
+            <br>
+            </p>
+            <div class="row">
+                <div class="col-4">
+                    <a href="/user/list">
+                        <button type="submit" class="btn btn-block btn-danger">OK</button>
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
-  </div><!-- /.login-box --><!-- jQuery -->
-  <script src="<c:url value="/resources/plugins/jquery/jquery.min.js"/>"></script>
-  <!-- Bootstrap 4 -->
-  <script src="<c:url value="/resources/plugins/bootstrap/js/bootstrap.bundle.min.js"/>"></script>
-  <!-- AdminLTE App -->
-  <script src="<c:url value="/resources/dist/js/adminlte.min.js"/>"></script>
-  <!-- AdminLTE for demo purposes -->
-  <script src="<c:url value="/resources/dist/js/demo.js"/>"></script>
 </div>
 </body>
 </html>

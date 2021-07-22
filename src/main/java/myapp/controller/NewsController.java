@@ -54,7 +54,7 @@ public class NewsController {
         news.setFormatDate();
         Optional<Person> person = repositoryPerson.findById((Long) session.getAttribute("id"));
         news.setPersonNews(person.get());
-        System.out.println(person.get().toString());
+        System.out.println(person.get());
         repositoryNews.save(news);
 
         return "redirect: /news/list";
